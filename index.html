@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ReviveIQ — Revive Stalled Pipeline. Recover Lost Revenue.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #080f1e;
+  --navy-2:    #0f172a;
+  --navy-3:    #1e3a5f;
+  --blue:      #2563eb;
+  --blue-mid:  #3b82f6;
+  --blue-light:#60a5fa;
+  --blue-pale: #93c5fd;
+  --glow:      rgba(37,99,235,0.28);
+  --glow-lg:   rgba(37,99,235,0.12);
+  --text:      #e2e8f0;
+  --muted:     #7f95b0;
+  --border:    rgba(96,165,250,0.12);
+  --border-hi: rgba(96,165,250,0.35);
+  --card:      rgba(14,26,50,0.7);
+  --card-hi:   rgba(22,42,75,0.85);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+
+body {
+  font-family:'DM Sans',sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4,h5 { font-family:'Syne',sans-serif; }
+
+/* ─── CANVAS BG ─── */
+#bg-canvas {
+  position:fixed; inset:0; z-index:0;
+  pointer-events:none; opacity:0.55;
+}
+
+/* ─── NAV ─── */
+#main-nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 4rem;
+  height:68px;
+  background:rgba(8,15,30,0.8);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.logo {
+  font-family:'Syne',sans-serif; font-weight:800; font-size:1.35rem;
+  color:#fff; text-decoration:none; letter-spacing:-0.04em;
+  display:flex; align-items:center; gap:0.35rem;
+}
+.logo-mark {
+  width:28px; height:28px; border-radius:6px;
+  background: linear-gradient(135deg,#2563eb,#60a5fa);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.85rem; font-weight:900; color:#fff;
+}
+.logo em { color:var(--blue-light); font-style:normal; }
+.nav-links { display:flex; gap:2.2rem; list-style:none; align-items:center; }
+.nav-links a {
+  color:var(--muted); text-decoration:none; font-size:0.875rem;
+  font-weight:500; transition:color .18s; cursor:pointer;
+}
+.nav-links a:hover { color:#fff; }
+.nav-cta {
+  background:var(--blue); color:#fff; padding:0.55rem 1.3rem;
+  border-radius:7px; text-decoration:none; font-weight:600; font-size:0.85rem;
+  border:none; cursor:pointer;
+  transition:background .18s, transform .15s, box-shadow .18s;
+}
+.nav-cta:hover {
+  background:#1d4ed8; transform:translateY(-1px);
+  box-shadow:0 4px 20px var(--glow);
+}
+
+/* ─── PAGE SYSTEM ─── */
+.page { display:none; position:relative; z-index:1; }
+.page.active { display:block; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:7rem 2rem 5rem;
+  position:relative; overflow:hidden;
+}
+.hero-orb {
+  position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none;
+}
+.orb-1 {
+  width:700px; height:700px;
+  background:radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%);
+  top:-100px; left:50%; transform:translateX(-50%);
+  animation:orbFloat1 8s ease-in-out infinite;
+}
+.orb-2 {
+  width:400px; height:400px;
+  background:radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 70%);
+  bottom:100px; right:-100px;
+  animation:orbFloat2 10s ease-in-out infinite;
+}
+.orb-3 {
+  width:300px; height:300px;
+  background:radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
+  bottom:0; left:-50px;
+  animation:orbFloat2 12s ease-in-out infinite reverse;
+}
+@keyframes orbFloat1 { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-30px)} }
+@keyframes orbFloat2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:rgba(37,99,235,0.12); border:1px solid rgba(96,165,250,0.25);
+  padding:0.4rem 1.1rem; border-radius:100px;
+  font-size:0.78rem; color:var(--blue-pale); font-weight:600;
+  letter-spacing:0.04em; text-transform:uppercase;
+  margin-bottom:2.2rem; animation:fadeUp .6s both;
+}
+.pulse-dot {
+  width:7px; height:7px; border-radius:50%; background:#22c55e;
+  animation:pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)}
+  50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}
+}
+
+.hero h1 {
+  font-size:clamp(3rem,6.5vw,5.5rem); font-weight:800; line-height:1.03;
+  letter-spacing:-0.04em; max-width:960px;
+  animation:fadeUp .7s .08s both;
+}
+.hero h1 .line-2 { display:block; }
+.hero h1 .accent {
+  background:linear-gradient(90deg,var(--blue-light),var(--blue-pale));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-sub {
+  font-size:clamp(1rem,2vw,1.18rem); color:var(--muted);
+  max-width:600px; line-height:1.75; margin-top:1.6rem;
+  animation:fadeUp .7s .16s both; font-weight:300;
+}
+.hero-actions {
+  display:flex; gap:1rem; margin-top:2.8rem;
+  animation:fadeUp .7s .24s both; flex-wrap:wrap; justify-content:center;
+}
+
+.btn-primary {
+  background:var(--blue); color:#fff; padding:0.9rem 2.2rem;
+  border-radius:9px; text-decoration:none; font-weight:600; font-size:0.95rem;
+  border:none; cursor:pointer;
+  transition:all .2s; display:inline-flex; align-items:center; gap:0.5rem;
+  box-shadow:0 0 0 0 var(--glow);
+}
+.btn-primary:hover {
+  background:#1d4ed8; transform:translateY(-2px);
+  box-shadow:0 8px 35px var(--glow);
+}
+.btn-ghost {
+  border:1px solid var(--border-hi); color:var(--text); padding:0.9rem 2.2rem;
+  border-radius:9px; text-decoration:none; font-weight:500; font-size:0.95rem;
+  transition:all .2s; background:rgba(255,255,255,0.03); cursor:pointer;
+  display:inline-flex; align-items:center; gap:0.5rem;
+}
+.btn-ghost:hover { border-color:var(--blue-light); color:#fff; background:rgba(37,99,235,0.08); }
+
+.hero-metrics {
+  display:flex; gap:4rem; margin-top:5rem;
+  animation:fadeUp .7s .32s both; border-top:1px solid var(--border);
+  padding-top:3rem;
+}
+.metric { text-align:center; }
+.metric-num {
+  font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800;
+  color:#fff; line-height:1;
+}
+.metric-num span { color:var(--blue-light); }
+.metric-label {
+  font-size:0.75rem; color:var(--muted); margin-top:0.4rem;
+  text-transform:uppercase; letter-spacing:0.08em; font-weight:500;
+}
+.metric-divider { width:1px; background:var(--border); align-self:stretch; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.1s; }
+.reveal-delay-2 { transition-delay:.2s; }
+.reveal-delay-3 { transition-delay:.3s; }
+
+/* ─── SECTION SHARED ─── */
+section { padding:7rem 4rem; position:relative; z-index:1; }
+.container { max-width:1200px; margin:0 auto; }
+.section-eyebrow {
+  font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--blue-light); margin-bottom:1rem; display:flex; align-items:center; gap:0.7rem;
+}
+.section-eyebrow::before {
+  content:''; width:28px; height:2px; background:var(--blue-light); border-radius:2px;
+}
+.section-title {
+  font-size:clamp(2rem,3.5vw,2.9rem); font-weight:800; line-height:1.08;
+  letter-spacing:-0.03em;
+}
+.section-title .accent {
+  background:linear-gradient(90deg,var(--blue-light),var(--blue-pale));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.section-sub {
+  color:var(--muted); font-size:1.05rem; line-height:1.72;
+  max-width:520px; margin-top:0.9rem; font-weight:300;
+}
+
+/* ─── SEPARATOR ─── */
+.sep { height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); margin:0; }
+
+/* ─── PROBLEM ─── */
+#problem { background:transparent; }
+.problem-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; margin-top:4rem; }
+.problem-items { display:flex; flex-direction:column; gap:1.2rem; }
+.prob-card {
+  display:flex; gap:1.2rem; padding:1.6rem 1.8rem;
+  border-radius:12px; border:1px solid var(--border);
+  background:var(--card); backdrop-filter:blur(12px);
+  transition:border-color .2s, background .2s, transform .2s;
+  cursor:default;
+}
+.prob-card:hover {
+  border-color:var(--border-hi); background:var(--card-hi);
+  transform:translateX(4px);
+}
+.prob-icon-wrap {
+  width:42px; height:42px; border-radius:10px; flex-shrink:0;
+  background:rgba(37,99,235,0.15); border:1px solid rgba(37,99,235,0.25);
+  display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+}
+.prob-card h4 { font-size:0.95rem; font-weight:700; margin-bottom:0.3rem; }
+.prob-card p { font-size:0.83rem; color:var(--muted); line-height:1.65; }
+
+.pipeline-viz {
+  background:var(--card); border:1px solid var(--border); border-radius:16px;
+  padding:2.5rem; backdrop-filter:blur(16px); position:sticky; top:100px;
+}
+.viz-title {
+  font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+  color:var(--muted); margin-bottom:2rem; display:flex; align-items:center; gap:0.5rem;
+}
+.viz-title::before { content:''; width:8px; height:8px; border-radius:50%; background:#f87171; animation:pulseDot 2s infinite; }
+.p-bar { margin-bottom:1.4rem; }
+.p-bar-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem; }
+.p-bar-label { font-size:0.82rem; color:var(--text); }
+.p-bar-pct { font-family:'Syne',sans-serif; font-size:0.9rem; font-weight:700; }
+.p-bar-track {
+  height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden;
+  position:relative;
+}
+.p-bar-fill {
+  height:100%; border-radius:5px; width:0;
+  transition:width 1.4s cubic-bezier(0.25,1,0.5,1);
+}
+.c-progressing { background:linear-gradient(90deg,#2563eb,#60a5fa); }
+.c-stalled     { background:linear-gradient(90deg,#d97706,#fbbf24); }
+.c-ghost       { background:linear-gradient(90deg,#dc2626,#f87171); }
+.c-recover     { background:linear-gradient(90deg,#7c3aed,#a78bfa); }
+.viz-insight {
+  margin-top:2rem; padding:1.2rem 1.4rem; border-radius:10px;
+  background:rgba(37,99,235,0.1); border:1px solid rgba(37,99,235,0.22);
+}
+.viz-insight-label { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--blue-light); margin-bottom:0.4rem; }
+.viz-insight p { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+.viz-insight strong { color:var(--blue-pale); }
+
+/* ─── HOW IT WORKS ─── */
+#how { background:transparent; }
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; position:relative; }
+.steps-grid::before {
+  content:''; position:absolute; top:48px; left:calc(16.66% + 20px); right:calc(16.66% + 20px);
+  height:1px; background:linear-gradient(90deg,transparent,var(--border-hi),transparent);
+}
+.step-card {
+  padding:2.5rem 2rem; border-radius:14px; border:1px solid var(--border);
+  background:var(--card); backdrop-filter:blur(12px); position:relative; overflow:hidden;
+  transition:border-color .25s, transform .25s, box-shadow .25s;
+}
+.step-card:hover {
+  border-color:var(--border-hi); transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+.step-card::after {
+  content:''; position:absolute; inset:0; border-radius:14px;
+  background:radial-gradient(circle at 0% 0%, rgba(37,99,235,0.08), transparent 60%);
+  pointer-events:none;
+}
+.step-number {
+  width:44px; height:44px; border-radius:11px;
+  background:rgba(37,99,235,0.15); border:1px solid rgba(37,99,235,0.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:1rem; font-weight:800;
+  color:var(--blue-light); margin-bottom:1.5rem;
+}
+.step-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.6rem; }
+.step-card p { font-size:0.85rem; color:var(--muted); line-height:1.7; }
+.step-detail {
+  margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--border);
+  font-size:0.78rem; color:var(--muted); display:flex; flex-direction:column; gap:0.4rem;
+}
+.step-detail span { display:flex; align-items:center; gap:0.5rem; }
+.step-detail span::before { content:'→'; color:var(--blue-light); font-weight:700; }
+
+/* ─── PRODUCTS ─── */
+#products { background:transparent; }
+.products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+.prod-card {
+  border-radius:16px; border:1px solid var(--border);
+  background:var(--card); backdrop-filter:blur(16px);
+  padding:2.5rem; display:flex; flex-direction:column;
+  transition:transform .25s, border-color .25s, box-shadow .25s; position:relative; overflow:hidden;
+}
+.prod-card:hover {
+  transform:translateY(-6px); border-color:var(--border-hi);
+  box-shadow:0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(96,165,250,0.15);
+}
+.prod-card.flagship {
+  background:linear-gradient(145deg, rgba(20,40,80,0.9), rgba(10,20,45,0.95));
+  border-color:rgba(37,99,235,0.4);
+}
+.prod-card.flagship::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at top left, rgba(37,99,235,0.12), transparent 60%);
+  pointer-events:none;
+}
+.prod-badge {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;
+  padding:0.3rem 0.75rem; border-radius:100px; margin-bottom:1.4rem; width:fit-content;
+}
+.badge-flagship { background:rgba(37,99,235,0.18); border:1px solid rgba(37,99,235,0.35); color:var(--blue-pale); }
+.badge-live     { background:rgba(34,197,94,0.1);  border:1px solid rgba(34,197,94,0.3);  color:#86efac; }
+.badge-live::before { content:'●'; font-size:0.5rem; color:#22c55e; animation:pulseDot 2s infinite; }
+.badge-dev      { background:rgba(234,179,8,0.1);  border:1px solid rgba(234,179,8,0.3);  color:#fde68a; }
+.prod-card h3 { font-size:1.45rem; font-weight:800; margin-bottom:0.7rem; }
+.prod-card .desc { font-size:0.875rem; color:var(--muted); line-height:1.7; flex-grow:1; }
+.prod-price { margin:1.6rem 0 0; }
+.price-big { font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800; color:#fff; line-height:1; }
+.price-small { font-size:0.8rem; color:var(--muted); margin-top:0.3rem; }
+.prod-features { list-style:none; margin:1.5rem 0; }
+.prod-features li {
+  font-size:0.83rem; color:var(--muted); padding:0.45rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  display:flex; align-items:flex-start; gap:0.6rem;
+}
+.prod-features li::before { content:'✓'; color:var(--blue-light); font-weight:800; flex-shrink:0; margin-top:1px; }
+.prod-btn {
+  display:block; text-align:center; padding:0.85rem 1rem; border-radius:9px;
+  font-weight:600; font-size:0.9rem; text-decoration:none; border:none; cursor:pointer;
+  transition:all .2s; margin-top:auto;
+}
+.prod-btn-solid { background:var(--blue); color:#fff; }
+.prod-btn-solid:hover { background:#1d4ed8; }
+.prod-btn-outline { background:transparent; border:1px solid var(--border-hi); color:var(--text); }
+.prod-btn-outline:hover { border-color:var(--blue-light); color:#fff; background:rgba(37,99,235,0.08); }
+
+/* ─── PROOF ─── */
+#proof {
+  background:linear-gradient(180deg, rgba(37,99,235,0.05) 0%, transparent 100%);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.proof-nums { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+.proof-num-card {
+  text-align:center; padding:3rem 2rem; border-radius:14px;
+  border:1px solid var(--border); background:var(--card); backdrop-filter:blur(12px);
+  transition:border-color .2s, transform .2s;
+}
+.proof-num-card:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+.proof-big {
+  font-family:'Syne',sans-serif; font-size:3.8rem; font-weight:800; color:#fff; line-height:1;
+  background:linear-gradient(135deg,#fff 0%,var(--blue-pale) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.proof-num-card p { font-size:0.875rem; color:var(--muted); margin-top:0.8rem; line-height:1.55; max-width:200px; margin-left:auto; margin-right:auto; }
+.proof-quote {
+  margin-top:3rem; padding:3rem 3.5rem; border-radius:14px;
+  border:1px solid var(--border); background:var(--card); backdrop-filter:blur(12px);
+  position:relative;
+}
+.proof-quote::before {
+  content:'"'; position:absolute; top:-0.5rem; left:2rem;
+  font-size:6rem; color:rgba(37,99,235,0.15); font-family:'Syne',sans-serif; line-height:1;
+}
+.proof-quote blockquote {
+  font-size:1.1rem; color:var(--text); line-height:1.75; font-weight:300;
+  font-style:italic; max-width:760px; margin:0 auto; text-align:center;
+}
+.proof-quote cite { display:block; text-align:center; font-size:0.8rem; color:var(--blue-light); font-weight:700; margin-top:1.5rem; font-style:normal; letter-spacing:0.05em; text-transform:uppercase; }
+
+/* ─── ABOUT ─── */
+#about { background:transparent; }
+.about-layout { display:grid; grid-template-columns:340px 1fr; gap:5rem; align-items:start; margin-top:4rem; }
+.about-card {
+  border-radius:16px; border:1px solid var(--border);
+  background:var(--card); backdrop-filter:blur(16px); padding:2.5rem;
+  position:sticky; top:100px;
+}
+.about-card::before {
+  content:''; position:absolute; inset:0; border-radius:16px;
+  background:radial-gradient(ellipse at 30% 10%, rgba(37,99,235,0.1), transparent 60%);
+  pointer-events:none;
+}
+.avatar-ring {
+  width:80px; height:80px; border-radius:50%; padding:3px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  margin-bottom:1.5rem;
+}
+.avatar-inner {
+  width:100%; height:100%; border-radius:50%;
+  background:linear-gradient(135deg,#1e3a5f,#0f172a);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; color:#fff;
+}
+.about-name { font-size:1.5rem; font-weight:800; }
+.about-role { font-size:0.85rem; color:var(--blue-light); font-weight:500; margin-top:0.2rem; }
+.about-loc { font-size:0.82rem; color:var(--muted); margin-top:0.3rem; display:flex; align-items:center; gap:0.3rem; }
+.about-bio { font-size:0.85rem; color:var(--muted); line-height:1.7; margin-top:1.3rem; font-weight:300; }
+.tag-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.4rem; }
+.tag {
+  font-size:0.72rem; padding:0.28rem 0.7rem; border-radius:100px;
+  border:1px solid var(--border); color:var(--muted); font-weight:500;
+}
+.about-content h3 { font-size:clamp(1.8rem,2.5vw,2.4rem); font-weight:800; line-height:1.15; letter-spacing:-0.03em; }
+.about-content > p { color:var(--muted); line-height:1.75; margin-top:1.1rem; font-size:0.95rem; font-weight:300; }
+.milestones { margin-top:2.5rem; position:relative; }
+.milestones::before {
+  content:''; position:absolute; left:15px; top:8px; bottom:8px;
+  width:1px; background:linear-gradient(180deg,var(--blue),transparent);
+}
+.milestone-item { display:flex; gap:1.5rem; align-items:flex-start; padding:1rem 0; padding-left:0.5rem; }
+.m-dot {
+  width:10px; height:10px; border-radius:50%; background:var(--blue); flex-shrink:0;
+  margin-top:5px; border:2px solid rgba(37,99,235,0.4); position:relative;
+  box-shadow:0 0 0 4px rgba(37,99,235,0.1);
+}
+.milestone-item p { font-size:0.875rem; color:var(--muted); line-height:1.6; }
+.milestone-item strong { color:#fff; font-weight:600; }
+
+/* ─── CONTACT ─── */
+#contact {
+  text-align:center;
+  background:radial-gradient(ellipse 70% 60% at 50% 100%, rgba(37,99,235,0.12), transparent 70%);
+  border-top:1px solid var(--border);
+}
+.contact-inner { max-width:600px; margin:0 auto; }
+.contact-inner h2 { font-size:clamp(2.2rem,4vw,3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; }
+.contact-inner p { color:var(--muted); margin:1.2rem 0 3rem; font-size:1rem; line-height:1.75; font-weight:300; }
+.cta-group { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.contact-note { margin-top:2rem; font-size:0.82rem; color:var(--muted); }
+.contact-note a { color:var(--blue-light); text-decoration:none; }
+.contact-note a:hover { text-decoration:underline; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding:2rem 4rem; border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:0.8rem; color:var(--muted); position:relative; z-index:1;
+}
+.footer-links { display:flex; gap:2rem; }
+.footer-links a { color:var(--muted); text-decoration:none; cursor:pointer; transition:color .15s; }
+.footer-links a:hover { color:#fff; }
+
+/* ─── PRODUCT PAGES ─── */
+.prod-page-hero {
+  padding:10rem 4rem 6rem; text-align:center;
+  position:relative; overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.prod-page-hero h1 { font-size:clamp(2.8rem,5vw,4.2rem); font-weight:800; letter-spacing:-0.04em; }
+.prod-page-hero .sub { font-size:1.05rem; color:var(--muted); max-width:520px; margin:1.2rem auto 0; line-height:1.75; font-weight:300; }
+.prod-page-hero .actions { display:flex; gap:1rem; justify-content:center; margin-top:2.5rem; flex-wrap:wrap; }
+
+.feat-section { padding:6rem 4rem; }
+.feats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3.5rem; }
+.feat-item {
+  padding:2rem; border-radius:12px; border:1px solid var(--border);
+  background:var(--card); backdrop-filter:blur(12px);
+  transition:border-color .2s, transform .2s;
+}
+.feat-item:hover { border-color:var(--border-hi); transform:translateY(-3px); }
+.feat-icon { font-size:1.8rem; margin-bottom:1rem; }
+.feat-item h4 { font-size:0.95rem; font-weight:700; margin-bottom:0.4rem; }
+.feat-item p { font-size:0.83rem; color:var(--muted); line-height:1.65; }
+
+.pricing-section { padding:5rem 4rem; border-top:1px solid var(--border); }
+.pricing-cards { display:flex; gap:1.5rem; justify-content:center; margin-top:3rem; flex-wrap:wrap; }
+.price-card {
+  width:300px; padding:2.5rem; border-radius:16px;
+  border:1px solid var(--border); background:var(--card); backdrop-filter:blur(12px);
+}
+.price-card.recommended {
+  border-color:rgba(37,99,235,0.4);
+  background:linear-gradient(145deg,rgba(20,40,80,0.9),rgba(10,20,45,0.95));
+  position:relative;
+}
+.price-card.recommended::before {
+  content:'MOST POPULAR'; position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  background:var(--blue); color:#fff; font-size:0.65rem; font-weight:700;
+  letter-spacing:0.1em; padding:0.3rem 1rem; border-radius:0 0 8px 8px;
+}
+.price-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; }
+.price-card .amt { font-family:'Syne',sans-serif; font-size:3rem; font-weight:800; color:#fff; line-height:1; margin:0.5rem 0; }
+.price-card .per { font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem; }
+.price-card ul { list-style:none; margin-bottom:2rem; }
+.price-card ul li { font-size:0.83rem; color:var(--muted); padding:0.45rem 0; display:flex; gap:0.5rem; }
+.price-card ul li::before { content:'✓'; color:var(--blue-light); font-weight:800; flex-shrink:0; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px) {
+  #main-nav { padding:0 1.5rem; }
+  .nav-links { display:none; }
+  section { padding:4.5rem 1.5rem; }
+  .hero { padding:7rem 1.5rem 4rem; }
+  .hero-metrics { gap:2rem; padding-top:2rem; }
+  .problem-layout, .about-layout { grid-template-columns:1fr; gap:3rem; }
+  .steps-grid, .products-grid, .proof-nums, .feats-grid { grid-template-columns:1fr; }
+  .steps-grid::before { display:none; }
+  .about-card { position:static; }
+  footer { flex-direction:column; gap:1.2rem; text-align:center; }
+  .footer-links { flex-wrap:wrap; justify-content:center; }
+  .prod-page-hero { padding:8rem 1.5rem 4rem; }
+  .feat-section, .pricing-section { padding:4rem 1.5rem; }
+}
+@media(max-width:600px) {
+  .hero h1 { font-size:2.5rem; letter-spacing:-0.03em; }
+  .hero-metrics { flex-wrap:wrap; gap:1.5rem; }
+  .metric-divider { display:none; }
+  .pricing-cards { flex-direction:column; align-items:center; }
+  .price-card { width:100%; max-width:340px; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND CANVAS -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════════ NAV -->
+<nav id="main-nav">
+  <a class="logo" href="#" onclick="showPage('home',event)">
+    <div class="logo-mark">R</div>
+    Revive<em>IQ</em>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home',event);scrollTo('#problem')">The Problem</a></li>
+    <li><a onclick="showPage('home',event);scrollTo('#products')">Products</a></li>
+    <li><a onclick="showPage('resumeiq',event)">ResumeIQ</a></li>
+    <li><a onclick="showPage('pipeline',event)">Job Pipeline</a></li>
+    <li><a onclick="showPage('home',event);scrollTo('#about')">About Bryan</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('home',event);scrollTo('#contact')">Book a Call →</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HOME PAGE -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      Revenue Intelligence · B2B Pipeline Recovery
+    </div>
+
+    <h1>
+      Your Pipeline Isn't Dead.
+      <span class="line-2"><span class="accent">It's Breaking.</span></span>
+    </h1>
+
+    <p class="hero-sub">
+      We diagnose where deals stall, rebuild your conversion system, and reactivate
+      the opportunities you've already earned—but haven't closed yet.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="scrollTo('#contact')">
+        Get a Free Pipeline Diagnosis →
+      </button>
+      <button class="btn-ghost" onclick="scrollTo('#how')">
+        See How It Works
+      </button>
+    </div>
+
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="metric-num">10<span>–25%</span></div>
+        <div class="metric-label">Pipeline Recovery Rate</div>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <div class="metric-num">$7<span>M+</span></div>
+        <div class="metric-label">Revenue Recovered</div>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <div class="metric-num">Top <span>0.3%</span></div>
+        <div class="metric-label">National Performance</div>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric">
+        <div class="metric-num">18<span>yr</span></div>
+        <div class="metric-label">Enterprise Revenue</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">The Root Cause</div>
+        <h2 class="section-title">Most teams don't have a<br/><span class="accent">leads problem.</span></h2>
+        <p class="section-sub">They have a systemic breakdown in how deals progress, stall, and ultimately die—without anyone diagnosing why.</p>
+      </div>
+      <div class="problem-layout">
+        <div class="problem-items">
+          <div class="prob-card reveal reveal-delay-1">
+            <div class="prob-icon-wrap">🎯</div>
+            <div>
+              <h4>ICP & Targeting Drift</h4>
+              <p>Reps chase deals that look good on paper but will never close. Pipeline gets polluted and forecast accuracy tanks.</p>
+            </div>
+          </div>
+          <div class="prob-card reveal reveal-delay-2">
+            <div class="prob-icon-wrap">💬</div>
+            <div>
+              <h4>Messaging That Misses</h4>
+              <p>Value props speak to features, not outcomes. Decision-makers disengage before you earn a second conversation.</p>
+            </div>
+          </div>
+          <div class="prob-card reveal reveal-delay-3">
+            <div class="prob-icon-wrap">🔩</div>
+            <div>
+              <h4>Broken Stage Criteria</h4>
+              <p>Reps advance deals on hope, not evidence. Stage definitions are inconsistent. Every rep plays by different rules.</p>
+            </div>
+          </div>
+          <div class="prob-card reveal reveal-delay-1">
+            <div class="prob-icon-wrap">👥</div>
+            <div>
+              <h4>Stakeholder Misalignment</h4>
+              <p>Champions go dark. Economic buyers never engage. Multi-threading never launches because no one owns it.</p>
+            </div>
+          </div>
+          <div class="prob-card reveal reveal-delay-2">
+            <div class="prob-icon-wrap">📉</div>
+            <div>
+              <h4>Post-Sale Drop-Off</h4>
+              <p>Expansion opportunities evaporate at handoff. CSMs inherit broken relationships with no context or playbook.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-viz reveal reveal-delay-2" id="pipelineViz">
+          <div class="viz-title">Live Pipeline Health Breakdown</div>
+
+          <div class="p-bar">
+            <div class="p-bar-top">
+              <span class="p-bar-label">Actively Progressing</span>
+              <span class="p-bar-pct" style="color:#60a5fa">22%</span>
+            </div>
+            <div class="p-bar-track"><div class="p-bar-fill c-progressing" data-w="22"></div></div>
+          </div>
+          <div class="p-bar">
+            <div class="p-bar-top">
+              <span class="p-bar-label">Stalled 30+ Days</span>
+              <span class="p-bar-pct" style="color:#fbbf24">41%</span>
+            </div>
+            <div class="p-bar-track"><div class="p-bar-fill c-stalled" data-w="41"></div></div>
+          </div>
+          <div class="p-bar">
+            <div class="p-bar-top">
+              <span class="p-bar-label">Ghost / No Response</span>
+              <span class="p-bar-pct" style="color:#f87171">28%</span>
+            </div>
+            <div class="p-bar-track"><div class="p-bar-fill c-ghost" data-w="28"></div></div>
+          </div>
+          <div class="p-bar">
+            <div class="p-bar-top">
+              <span class="p-bar-label">Recoverable with Intervention</span>
+              <span class="p-bar-pct" style="color:#a78bfa">9%</span>
+            </div>
+            <div class="p-bar-track"><div class="p-bar-fill c-recover" data-w="9"></div></div>
+          </div>
+
+          <div class="viz-insight">
+            <div class="viz-insight-label">ReviveIQ targets this gap</div>
+            <p>Converting the <strong>69% of stalled + ghost deals</strong> into recoverable pipeline—without building new leads from scratch. That's your fastest path to revenue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">The Method</div>
+        <h2 class="section-title">Diagnose. Rebuild. <span class="accent">Recover.</span></h2>
+        <p class="section-sub">Three phases. Measurable outcomes at every step. Built for revenue leaders who need results—not more slide decks.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">01</div>
+          <h3>Pipeline Diagnosis</h3>
+          <p>We audit every stalled deal, root cause mapped, patterns identified. You get an executive summary per opportunity within 5 business days.</p>
+          <div class="step-detail">
+            <span>Deal-by-deal forensic audit</span>
+            <span>Root cause mapping per stage</span>
+            <span>Executive summary delivered</span>
+          </div>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">02</div>
+          <h3>Conversion Rebuild</h3>
+          <p>We redesign the process gaps killing your deals. Stakeholder re-engagement strategy. Messaging fixes. Stage criteria that reflect how deals actually close.</p>
+          <div class="step-detail">
+            <span>Stakeholder reconnection strategy</span>
+            <span>Message repositioning playbook</span>
+            <span>Revised stage entry/exit criteria</span>
+          </div>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">03</div>
+          <h3>Revenue Recovery</h3>
+          <p>We run the plays alongside your team. Every reactivated deal tracked. ROI measured. Sustainable adoption built in—not bolted on after the fact.</p>
+          <div class="step-detail">
+            <span>Live deal re-engagement support</span>
+            <span>ROI tracking per recovered deal</span>
+            <span>Adoption framework installed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">Product Suite</div>
+        <h2 class="section-title">Tools built for<br/><span class="accent">revenue outcomes.</span></h2>
+        <p class="section-sub">From enterprise pipeline consulting to AI-powered job tools—every product solves a real revenue problem.</p>
+      </div>
+      <div class="products-grid">
+        <div class="prod-card flagship reveal reveal-delay-1">
+          <span class="prod-badge badge-flagship">★ Core Consulting</span>
+          <h3>ReviveIQ Core</h3>
+          <p class="desc">Enterprise pipeline recovery consulting. Deal-level diagnostics with an executive summary per opportunity. Stakeholder re-engagement playbooks and hands-on revenue recovery support.</p>
+          <div class="prod-price">
+            <div class="price-big">Custom</div>
+            <div class="price-small">Engagement-based · Growth-stage B2B SaaS</div>
+          </div>
+          <ul class="prod-features">
+            <li>Full pipeline audit, deal by deal</li>
+            <li>Root cause executive summary</li>
+            <li>Stakeholder re-engagement playbooks</li>
+            <li>Hands-on deal recovery support</li>
+            <li>Conversion system rebuild</li>
+            <li>Adoption framework installation</li>
+          </ul>
+          <button class="prod-btn prod-btn-solid" onclick="scrollTo('#contact')">Book a Discovery Call →</button>
+        </div>
+
+        <div class="prod-card reveal reveal-delay-2">
+          <span class="prod-badge badge-live">Live Now</span>
+          <h3>ResumeIQ</h3>
+          <p class="desc">Transform any resume into an ATS-optimized Word document. AI-powered keyword analysis, instant formatting, and professional download—ready in under a minute.</p>
+          <div class="prod-price">
+            <div class="price-big">$9<span style="font-size:1.1rem;color:var(--muted)">.99</span></div>
+            <div class="price-small">One-time · or $29/mo unlimited</div>
+          </div>
+          <ul class="prod-features">
+            <li>ATS-optimized Word download</li>
+            <li>AI keyword gap analysis</li>
+            <li>Role-specific targeting</li>
+            <li>60-second turnaround</li>
+          </ul>
+          <div style="display:flex;gap:0.6rem;flex-direction:column">
+            <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="prod-btn prod-btn-solid">Try ResumeIQ →</a>
+            <button class="prod-btn prod-btn-outline" onclick="showPage('resumeiq',event)">Learn More</button>
+          </div>
+        </div>
+
+        <div class="prod-card reveal reveal-delay-3">
+          <span class="prod-badge badge-dev">⚡ In Development</span>
+          <h3>Job Search Pipeline</h3>
+          <p class="desc">AI-powered job search management. Adzuna discovery, Apollo contact sourcing, application stage tracking, and outreach sequence automation—built like a sales pipeline.</p>
+          <div class="prod-price">
+            <div class="price-big">Coming</div>
+            <div class="price-small">Early access waitlist open now</div>
+          </div>
+          <ul class="prod-features">
+            <li>Adzuna job discovery engine</li>
+            <li>Apollo contact sourcing</li>
+            <li>Kanban application tracker</li>
+            <li>Outreach sequence builder</li>
+          </ul>
+          <div style="display:flex;gap:0.6rem;flex-direction:column">
+            <button class="prod-btn prod-btn-solid" onclick="scrollTo('#contact')">Join Waitlist →</button>
+            <button class="prod-btn prod-btn-outline" onclick="showPage('pipeline',event)">Preview Features</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- PROOF -->
+  <section id="proof">
+    <div class="container">
+      <div class="reveal" style="text-align:center">
+        <div class="section-eyebrow" style="justify-content:center">Track Record</div>
+        <h2 class="section-title">The numbers<br/><span class="accent">don't lie.</span></h2>
+      </div>
+      <div class="proof-nums">
+        <div class="proof-num-card reveal reveal-delay-1">
+          <div class="proof-big">$7M+</div>
+          <p>Renewal and expansion revenue driven across multi-state enterprise territories</p>
+        </div>
+        <div class="proof-num-card reveal reveal-delay-2">
+          <div class="proof-big">0.3%</div>
+          <p>National performance ranking across enterprise SaaS sales organizations</p>
+        </div>
+        <div class="proof-num-card reveal reveal-delay-3">
+          <div class="proof-big">18yr</div>
+          <p>Enterprise revenue leadership from front-line SDR to multi-state account executive</p>
+        </div>
+      </div>
+      <div class="proof-quote reveal">
+        <blockquote>
+          Most pipeline failure isn't a people problem. It's a systems problem—and nobody's solving it
+          at the individual deal level. That's the gap ReviveIQ was built to close.
+        </blockquote>
+        <cite>Bryan Michael Greer · Founder, ReviveIQ</cite>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">The Founder</div>
+        <h2 class="section-title">Built from <span class="accent">real revenue work.</span></h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-card reveal">
+          <div class="avatar-ring"><div class="avatar-inner">BG</div></div>
+          <div class="about-name">Bryan Michael Greer</div>
+          <div class="about-role">Founder & Revenue Consultant</div>
+          <div class="about-loc">📍 Fort Lauderdale, Florida</div>
+          <p class="about-bio">18+ years building and recovering revenue across enterprise B2B. From front-line SDR to multi-state SaaS leader. $7M+ in renewal and expansion revenue. Top 0.3% nationally.</p>
+          <div class="tag-row">
+            <span class="tag">Enterprise SaaS</span>
+            <span class="tag">Pipeline Recovery</span>
+            <span class="tag">Deal Diagnostics</span>
+            <span class="tag">Stakeholder Alignment</span>
+            <span class="tag">Multi-State Leadership</span>
+            <span class="tag">B2B Revenue</span>
+          </div>
+        </div>
+        <div class="about-content reveal reveal-delay-2">
+          <h3>I didn't build ReviveIQ from a whiteboard.</h3>
+          <p>I built it from 18 years of watching deals die—not because of bad products or bad reps—but because of systemic gaps that nobody was willing to diagnose at the deal level.</p>
+          <p style="margin-top:1rem">I've been the SDR grinding dials. The AE inheriting broken pipeline. The leader watching forecast accuracy evaporate. I've lived every version of this problem. ReviveIQ is the methodology I wish existed when I was inside it.</p>
+          <div class="milestones">
+            <div class="milestone-item">
+              <div class="m-dot"></div>
+              <p><strong>Started as an SDR</strong> — learned pipeline building, qualification rigor, and the importance of follow-through from the ground up.</p>
+            </div>
+            <div class="milestone-item">
+              <div class="m-dot"></div>
+              <p><strong>Grew into multi-state SaaS leadership</strong> — drove $7M+ in renewal and expansion. Achieved top 0.3% national performance ranking.</p>
+            </div>
+            <div class="milestone-item">
+              <div class="m-dot"></div>
+              <p><strong>Identified the pattern</strong> — pipeline failure is almost never a talent problem. It's a systems and diagnosis problem that compounds every quarter.</p>
+            </div>
+            <div class="milestone-item">
+              <div class="m-dot"></div>
+              <p><strong>Founded ReviveIQ</strong> — to bring deal-level diagnostic rigor to growth-stage B2B teams who are sitting on recoverable revenue they don't know how to unlock.</p>
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:2.5rem" onclick="scrollTo('#contact')">Work with Bryan →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="reveal">
+          <div class="section-eyebrow" style="justify-content:center">Get Started</div>
+          <h2>Ready to recover your<br/><span class="accent">stalled pipeline?</span></h2>
+          <p>A 30-minute discovery call is all it takes to identify whether ReviveIQ can unlock the revenue you've already earned—but haven't closed yet. No pitch. Just a real diagnosis.</p>
+          <div class="cta-group">
+            <a href="https://calendly.com/reviveiq" target="_blank" class="btn-primary">📅 Book a Discovery Call</a>
+            <a href="mailto:bryan@reviveiq.com" class="btn-ghost">✉️ Send an Email</a>
+          </div>
+          <p class="contact-note">Or reach out directly: <a href="mailto:bryan@reviveiq.com">bryan@reviveiq.com</a> · Fort Lauderdale, FL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 ReviveIQ · Fort Lauderdale, FL · <a href="mailto:bryan@reviveiq.com">bryan@reviveiq.com</a></div>
+    <div class="footer-links">
+      <a onclick="showPage('resumeiq',event)">ResumeIQ</a>
+      <a onclick="showPage('pipeline',event)">Job Pipeline</a>
+      <a onclick="scrollTo('#about')">About</a>
+      <a onclick="scrollTo('#contact')">Contact</a>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ RESUMEIQ PAGE -->
+<div id="page-resumeiq" class="page">
+  <div class="prod-page-hero">
+    <div class="hero-orb orb-1"></div>
+    <span class="prod-badge badge-live" style="margin:0 auto 1.2rem">Live Now</span>
+    <div class="section-eyebrow" style="justify-content:center">ResumeIQ</div>
+    <h1>Your Resume.<br/><span class="accent">ATS-Ready in 60 Seconds.</span></h1>
+    <p class="sub">Upload any resume. Get back a fully optimized, ATS-formatted Word document with keyword gap analysis—ready to submit anywhere.</p>
+    <div class="actions">
+      <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="btn-primary">Launch ResumeIQ →</a>
+      <button class="btn-ghost" onclick="showPage('home',event)">← Back to ReviveIQ</button>
+    </div>
+  </div>
+
+  <div class="feat-section">
+    <div class="container">
+      <div class="section-eyebrow">What It Does</div>
+      <h2 class="section-title">Built for job seekers who<br/><span class="accent">don't have time to guess.</span></h2>
+      <div class="feats-grid">
+        <div class="feat-item">
+          <div class="feat-icon">📄</div>
+          <h4>ATS Optimization</h4>
+          <p>Reformats your resume to pass applicant tracking systems. No more getting filtered before a human sees your name.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🔑</div>
+          <h4>Keyword Gap Analysis</h4>
+          <p>Identifies missing keywords from job descriptions and weaves them in naturally—without keyword stuffing.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">📥</div>
+          <h4>Instant Word Download</h4>
+          <p>Download a professionally formatted .docx file ready to attach to any application. No account required.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">⚡</div>
+          <h4>60-Second Turnaround</h4>
+          <p>Paste or upload your resume. Get your optimized version back in under a minute. Speed matters.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🎯</div>
+          <h4>Role Targeting</h4>
+          <p>Customize for specific roles and industries. AI-powered positioning recommendations for each application.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🔒</div>
+          <h4>Private & Secure</h4>
+          <p>Your data isn't stored or shared. Each session is independent. Your career history stays yours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pricing-section">
+    <div class="container" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center">Pricing</div>
+      <h2 class="section-title">Simple, <span class="accent">transparent pricing.</span></h2>
+      <div class="pricing-cards">
+        <div class="price-card">
+          <h3>One-Time</h3>
+          <div class="amt">$9<span style="font-size:1.1rem;color:var(--muted)">.99</span></div>
+          <div class="per">Single resume · No subscription</div>
+          <ul>
+            <li>1 optimized resume</li>
+            <li>ATS formatting</li>
+            <li>Word doc download</li>
+            <li>Keyword gap analysis</li>
+          </ul>
+          <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="prod-btn prod-btn-outline" style="display:block;text-align:center">Get Started →</a>
+        </div>
+        <div class="price-card recommended">
+          <h3>Unlimited</h3>
+          <div class="amt">$29<span style="font-size:1.1rem;color:var(--muted)">/mo</span></div>
+          <div class="per">Unlimited resumes · Cancel anytime</div>
+          <ul>
+            <li>Unlimited resumes</li>
+            <li>ATS formatting</li>
+            <li>Word doc download</li>
+            <li>Keyword gap analysis</li>
+            <li>Role targeting</li>
+            <li>Priority processing</li>
+          </ul>
+          <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="prod-btn prod-btn-solid" style="display:block;text-align:center">Start Unlimited →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2025 ReviveIQ · <a onclick="showPage('home',event)" style="cursor:pointer">ReviveIQ.com</a></div>
+    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQ</a></div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ JOB PIPELINE PAGE -->
+<div id="page-pipeline" class="page">
+  <div class="prod-page-hero">
+    <div class="hero-orb orb-1"></div>
+    <span class="prod-badge badge-dev" style="margin:0 auto 1.2rem">⚡ In Development</span>
+    <div class="section-eyebrow" style="justify-content:center">Job Search Pipeline</div>
+    <h1>Your Job Search.<br/><span class="accent">Systematized.</span></h1>
+    <p class="sub">AI-powered job discovery, contact sourcing, and application tracking—built like a sales pipeline because that's exactly what it is.</p>
+    <div class="actions">
+      <a href="mailto:bryan@reviveiq.com?subject=Job+Pipeline+Early+Access" class="btn-primary">Join the Waitlist →</a>
+      <button class="btn-ghost" onclick="showPage('home',event)">← Back to ReviveIQ</button>
+    </div>
+  </div>
+
+  <div class="feat-section">
+    <div class="container">
+      <div class="section-eyebrow">Feature Preview</div>
+      <h2 class="section-title">Every feature a <span class="accent">revenue pro</span> would build.</h2>
+      <div class="feats-grid">
+        <div class="feat-item">
+          <div class="feat-icon">🔎</div>
+          <h4>Adzuna Job Discovery</h4>
+          <p>Search thousands of live listings. Filter by role, location, salary, and company stage. Updated daily.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">👤</div>
+          <h4>Apollo Contact Sourcing</h4>
+          <p>Surface hiring managers and decision-makers automatically. Direct paths—not just job board applications.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">📊</div>
+          <h4>Application Stage Tracking</h4>
+          <p>Kanban pipeline view. Track every application from discovery through offer. No thread ever gets dropped.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">✉️</div>
+          <h4>Outreach Sequence Builder</h4>
+          <p>Multi-touch sequences per opportunity. LinkedIn + email. Follow-up reminders built into every stage.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">🤖</div>
+          <h4>AI Personalization Engine</h4>
+          <p>Tailors your resume and cover letter for each role and company. One-click, role-specific optimization.</p>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">📈</div>
+          <h4>Pipeline Analytics</h4>
+          <p>Conversion rates by stage. Response rate tracking. Weekly summaries that drive better decisions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:5rem 4rem;text-align:center;border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 50%, rgba(37,99,235,0.1), transparent 70%)">
+    <div class="container">
+      <div class="section-eyebrow" style="justify-content:center">Early Access</div>
+      <h2 class="section-title" style="max-width:500px;margin:0 auto">Get in early.<br/><span class="accent">Lock in founder pricing.</span></h2>
+      <p style="color:var(--muted);max-width:420px;margin:1rem auto 2.5rem;line-height:1.75;font-weight:300;font-size:0.95rem">We're building this in the open. Early access users shape the product and get lifetime pricing locked in before public launch.</p>
+      <a href="mailto:bryan@reviveiq.com?subject=Job+Pipeline+Early+Access" class="btn-primary">✉️ Join the Waitlist</a>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2025 ReviveIQ · <a onclick="showPage('home',event)" style="cursor:pointer">ReviveIQ.com</a></div>
+    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQ</a></div>
+  </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ SCRIPTS -->
+<script>
+// ── PAGE SYSTEM ──────────────────────────────────
+function showPage(id, e) {
+  if(e) e.preventDefault();
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  initReveal();
+}
+
+function scrollTo(sel) {
+  const el = document.querySelector(sel);
+  if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth', block:'start'}), 80);
+}
+
+// ── BACKGROUND CANVAS ────────────────────────────
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], mouse = {x:0,y:0};
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initParticles() {
+  particles = [];
+  const n = Math.min(Math.floor((W*H)/14000), 90);
+  for(let i=0;i<n;i++) {
+    particles.push({
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-.5)*0.25, vy: (Math.random()-.5)*0.25,
+      r: Math.random()*1.8+0.4,
+      a: Math.random()*0.5+0.1,
+      color: Math.random()>.6 ? '#60a5fa' : '#2563eb'
+    });
+  }
+}
+
+function drawFrame() {
+  ctx.clearRect(0,0,W,H);
+  // connections
+  for(let i=0;i<particles.length;i++) {
+    for(let j=i+1;j<particles.length;j++) {
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<160) {
+        ctx.beginPath();
+        ctx.strokeStyle=`rgba(37,99,235,${0.08*(1-d/160)})`;
+        ctx.lineWidth=0.6;
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  // dots
+  particles.forEach(p => {
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+    // mouse repel
+    const dx=p.x-mouse.x, dy=p.y-mouse.y;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<120) { p.x+=dx/d*0.6; p.y+=dy/d*0.6; }
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=p.color;
+    ctx.globalAlpha=p.a;
+    ctx.fill();
+    ctx.globalAlpha=1;
+  });
+  requestAnimationFrame(drawFrame);
+}
+
+window.addEventListener('mousemove', e => { mouse.x=e.clientX; mouse.y=e.clientY; });
+window.addEventListener('resize', ()=>{ resize(); initParticles(); });
+resize(); initParticles(); drawFrame();
+
+// ── SCROLL REVEAL ────────────────────────────────
+function initReveal() {
+  const els = document.querySelectorAll('.page.active .reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+  els.forEach(el => { el.classList.remove('visible'); obs.observe(el); });
+}
+
+// ── PIPELINE BARS ────────────────────────────────
+function initBars() {
+  const viz = document.getElementById('pipelineViz');
+  if(!viz) return;
+  const obs = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting) {
+      viz.querySelectorAll('.p-bar-fill').forEach(bar => {
+        const w = bar.getAttribute('data-w');
+        bar.style.width = '0%';
+        requestAnimationFrame(()=> requestAnimationFrame(()=>{ bar.style.width = w+'%'; }));
+      });
+      obs.disconnect();
+    }
+  }, { threshold:0.3 });
+  obs.observe(viz);
+}
+
+// ── INIT ─────────────────────────────────────────
+initReveal();
+initBars();
+
+// re-run reveal on scroll for home
+document.addEventListener('scroll', ()=>{}, {passive:true});
+</script>
+</body>
+</html>
