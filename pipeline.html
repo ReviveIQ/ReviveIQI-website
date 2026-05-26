@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReviveIQ — Revive Your Pipeline. Recover Your Revenue.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080A0F;
+    --deep: #0D1117;
+    --surface: #131820;
+    --border: #1E2733;
+    --accent: #00C896;
+    --accent2: #0080FF;
+    --warn: #FF6B35;
+    --text: #E8EDF2;
+    --muted: #7A8899;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(8,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    color: var(--white);
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,200,150,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(0,128,255,0.05) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,200,150,0.1);
+    border: 1px solid rgba(0,200,150,0.25);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 32px rgba(0,200,150,0.25);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 48px rgba(0,200,150,0.4);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--muted); color: var(--white); }
+
+  /* STATS STRIP */
+  .stats-strip {
+    display: flex; gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 36px 48px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: var(--surface); }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  /* PROBLEM SECTION */
+  .section {
+    padding: 100px 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .section-intro {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* PROBLEM CARDS */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .problem-card {
+    background: var(--deep);
+    padding: 40px 36px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--warn);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .problem-card:hover::before { transform: scaleX(1); }
+  .problem-card:hover { background: var(--surface); }
+
+  .problem-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .problem-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .problem-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 100px 48px;
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 64px;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+    letter-spacing: -3px;
+  }
+
+  .step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .step p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .step-accent {
+    display: inline-block;
+    background: rgba(0,200,150,0.1);
+    border: 1px solid rgba(0,200,150,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* PIPELINE DIAGNOSTIC DEMO */
+  .demo-section {
+    padding: 100px 48px;
+  }
+
+  .demo-container {
+    margin-top: 64px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--deep);
+  }
+
+  .demo-header {
+    padding: 20px 28px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .demo-dots { display: flex; gap: 7px; }
+  .demo-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+  }
+  .demo-dot:nth-child(1) { background: #FF5F56; }
+  .demo-dot:nth-child(2) { background: #FFBD2E; }
+  .demo-dot:nth-child(3) { background: #27C93F; }
+
+  .demo-title {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-left: 4px;
+  }
+
+  .demo-body {
+    padding: 36px;
+  }
+
+  .pipeline-stages {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .pipeline-stage {
+    flex: 1;
+    text-align: center;
+    padding: 20px 12px;
+    border: 1px solid var(--border);
+    border-right: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .pipeline-stage:first-child { border-radius: 8px 0 0 8px; }
+  .pipeline-stage:last-child { border-right: 1px solid var(--border); border-radius: 0 8px 8px 0; }
+
+  .pipeline-stage.active {
+    background: rgba(0,200,150,0.08);
+    border-color: var(--accent);
+    z-index: 1;
+  }
+
+  .pipeline-stage.danger { background: rgba(255,107,53,0.06); border-color: rgba(255,107,53,0.3); }
+  .pipeline-stage.danger .stage-num { color: var(--warn); }
+
+  .stage-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .stage-label {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .stage-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+
+  .stage-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .diagnosis-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+  }
+
+  .diagnosis-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--warn);
+    animation: pulse 2s infinite;
+  }
+
+  .diagnosis-items { display: flex; flex-direction: column; gap: 12px; }
+
+  .diag-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 16px;
+    background: var(--deep);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .diag-item:hover { border-color: var(--accent); }
+
+  .diag-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .diag-text h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .diag-text p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .diag-tag {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+
+  .tag-high { background: rgba(255,107,53,0.15); color: var(--warn); }
+  .tag-med { background: rgba(255,189,46,0.15); color: #FFBD2E; }
+  .tag-low { background: rgba(0,200,150,0.15); color: var(--accent); }
+
+  /* TESTIMONIAL / SOCIAL PROOF */
+  .proof-section {
+    padding: 100px 48px;
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .proof-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .proof-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .proof-quote {
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .proof-author {
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .proof-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--black);
+  }
+
+  .proof-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  .proof-role {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,200,150,0.06) 0%, transparent 70%);
+  }
+
+  .cta-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+  .cta-section h2 { margin-bottom: 20px; }
+
+  .cta-sub {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* FORM */
+  .form-row {
+    display: flex; gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .form-input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input::placeholder { color: var(--muted); }
+  .form-input:focus { border-color: var(--accent); }
+
+  .form-btn {
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,200,150,0.3);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo { font-size: 18px; }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .stats-strip { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .section { padding: 72px 24px; }
+    .how-section { padding: 72px 24px; }
+    .demo-section { padding: 72px 24px; }
+    .proof-section { padding: 72px 24px; }
+    .cta-section { padding: 80px 24px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 40px; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .pipeline-stages { flex-wrap: wrap; gap: 8px; }
+    .pipeline-stage { border: 1px solid var(--border) !important; border-radius: 8px !important; flex: 1 1 calc(50% - 4px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Revive<span>IQ</span></div>
+  <ul>
+    <li><a href="#problem">The Problem</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#proof">Results</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Diagnosis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Pipeline Recovery Intelligence</div>
+    <h1>Your next <em>$1M</em><br>is already<br>in your CRM.</h1>
+    <p class="hero-sub">
+      ReviveIQ diagnoses <strong>why deals stall</strong>, maps a reconnection strategy for each opportunity, and rebuilds the conversion systems that let revenue slip through the cracks.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Get Your Free Pipeline Diagnosis
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#demo" class="btn-ghost">
+        See How It Works
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat fade-in">
+    <span class="stat-num">10<span>–</span>25<span>%</span></span>
+    <span class="stat-label">of stalled pipeline recovered on average</span>
+  </div>
+  <div class="stat fade-in">
+    <span class="stat-num">72<span>%</span></span>
+    <span class="stat-label">of B2B deals stall due to process breakdowns — not budget</span>
+  </div>
+  <div class="stat fade-in">
+    <span class="stat-num">48<span>hr</span></span>
+    <span class="stat-label">average time to first executive diagnostic report</span>
+  </div>
+  <div class="stat fade-in">
+    <span class="stat-num">3<span>x</span></span>
+    <span class="stat-label">higher ROI than hiring new sales talent for the same outcome</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="fade-in">
+    <div class="section-label">The Problem</div>
+    <h2>Your pipeline isn't<br>dead. It's broken.</h2>
+    <p class="section-intro">Most teams respond to stalled deals by adding more leads, more training, or more headcount — without ever fixing the root cause.</p>
+  </div>
+  <div class="problem-grid fade-in">
+    <div class="problem-card">
+      <span class="problem-icon">🎯</span>
+      <h3>Targeting Drift</h3>
+      <p>Reps are chasing logos that don't fit. ICP definitions erode over time, quietly filling your pipeline with opportunities that were never going to close.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-icon">💬</span>
+      <h3>Messaging Breakdown</h3>
+      <p>Value props that worked 18 months ago no longer land. Buyers have moved on — but your pitch hasn't. Deals stall at first conversation.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-icon">🔗</span>
+      <h3>Process Gaps</h3>
+      <p>There are invisible drop-off points between stages. No one owns the handoff. No one flags the warning signs. Deals quietly die without anyone knowing why.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-icon">👥</span>
+      <h3>Stakeholder Misalignment</h3>
+      <p>Champion goes dark. Economic buyer was never identified. Deals that look warm in the CRM are cold in the real world — and your forecast is fiction.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-icon">📉</span>
+      <h3>Inflated Forecasts</h3>
+      <p>Aging pipeline gets pushed forward instead of disqualified. Leadership makes hiring and spending decisions based on numbers that don't reflect reality.</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-icon">🔄</span>
+      <h3>Post-Sale Drop-Off</h3>
+      <p>Expansion opportunities sit untouched. CSMs are reactive, not proactive. NRR suffers while the team focuses exclusively on new logos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="fade-in">
+    <div class="section-label">How It Works</div>
+    <h2>Three steps to recovered revenue.</h2>
+    <p class="section-intro">We don't just audit your pipeline. We build you a recovery system.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <span class="step-num">01</span>
+      <span class="step-accent">Diagnose</span>
+      <h3>Pipeline Autopsy</h3>
+      <p>We analyze every deal in your stalled pipeline — mapping where it broke, why it broke, and what it would take to revive it. You get an executive summary with deal-level detail and a clear recovery score for each opportunity.</p>
+    </div>
+    <div class="step fade-in">
+      <span class="step-num">02</span>
+      <span class="step-accent">Rebuild</span>
+      <h3>Conversion System Repair</h3>
+      <p>We identify the systemic breakdowns — the process gaps, messaging failures, and targeting drift — and rebuild the conversion infrastructure so the same deals don't stall again six months from now.</p>
+    </div>
+    <div class="step fade-in">
+      <span class="step-num">03</span>
+      <span class="step-accent">Reactivate</span>
+      <h3>Reconnection Strategy</h3>
+      <p>For each recoverable deal, we map a specific reconnection play — the right stakeholder, the right message, the right moment. Not a generic drip. A precision re-engagement strategy built for that account.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="fade-in">
+    <div class="section-label">Live Demo</div>
+    <h2>What a pipeline diagnosis<br>actually looks like.</h2>
+    <p class="section-intro">Click any stage to see where deals are breaking down — and what ReviveIQ flags for recovery.</p>
+  </div>
+
+  <div class="demo-container fade-in">
+    <div class="demo-header">
+      <div class="demo-dots">
+        <div class="demo-dot"></div>
+        <div class="demo-dot"></div>
+        <div class="demo-dot"></div>
+      </div>
+      <span class="demo-title">ReviveIQ Pipeline Diagnostic — Q2 2026</span>
+    </div>
+    <div class="demo-body">
+      <div class="pipeline-stages" id="pipelineStages">
+        <div class="pipeline-stage active" data-stage="0" onclick="selectStage(0)">
+          <span class="stage-num">42</span>
+          <span class="stage-label">Prospecting</span>
+          <div class="stage-bar"><div class="stage-fill" style="width:85%; background: var(--accent);"></div></div>
+        </div>
+        <div class="pipeline-stage" data-stage="1" onclick="selectStage(1)">
+          <span class="stage-num">28</span>
+          <span class="stage-label">Discovery</span>
+          <div class="stage-bar"><div class="stage-fill" style="width:60%; background: var(--accent);"></div></div>
+        </div>
+        <div class="pipeline-stage danger" data-stage="2" onclick="selectStage(2)">
+          <span class="stage-num">31</span>
+          <span class="stage-label">Proposal ⚠</span>
+          <div class="stage-bar"><div class="stage-fill" style="width:90%; background: var(--warn);"></div></div>
+        </div>
+        <div class="pipeline-stage danger" data-stage="3" onclick="selectStage(3)">
+          <span class="stage-num">19</span>
+          <span class="stage-label">Negotiation ⚠</span>
+          <div class="stage-bar"><div class="stage-fill" style="width:75%; background: var(--warn);"></div></div>
+        </div>
+        <div class="pipeline-stage" data-stage="4" onclick="selectStage(4)">
+          <span class="stage-num">7</span>
+          <span class="stage-label">Closed Won</span>
+          <div class="stage-bar"><div class="stage-fill" style="width:20%; background: var(--accent2);"></div></div>
+        </div>
+      </div>
+
+      <div class="diagnosis-panel">
+        <div class="diagnosis-title">
+          <div class="status-dot"></div>
+          <span id="diagTitle">Prospecting Stage — Diagnosis Active</span>
+        </div>
+        <div class="diagnosis-items" id="diagItems">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section" id="proof">
+  <div class="fade-in">
+    <div class="section-label">Results</div>
+    <h2>What happens when<br>you stop guessing.</h2>
+  </div>
+  <div class="proof-grid">
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"We had $2.4M sitting in late-stage pipeline that had gone cold. ReviveIQ identified 14 recoverable deals and mapped a specific play for each one. We closed 6 of them within 90 days."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">MK</div>
+        <div>
+          <div class="proof-name">Marcus K.</div>
+          <div class="proof-role">VP of Sales, Series B SaaS</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"The audit showed us that 40% of our pipeline was never going to close — and exactly why. Once we fixed the process gaps, our conversion rate went from 18% to 31% in one quarter."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">SR</div>
+        <div>
+          <div class="proof-name">Sarah R.</div>
+          <div class="proof-role">CRO, EdTech Platform</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"We thought we needed to hire two more AEs. ReviveIQ showed us we had enough pipeline to hit our number — it just needed to be recovered and re-engaged, not replaced."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">JT</div>
+        <div>
+          <div class="proof-name">James T.</div>
+          <div class="proof-role">CEO, Founder-Led SaaS</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"The executive summary was the clearest picture of our sales health we've ever had. Deal-by-deal. Root cause by root cause. Actionable from day one."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">AL</div>
+        <div>
+          <div class="proof-name">Andrea L.</div>
+          <div class="proof-role">Director of Revenue, GovTech</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="section-label" style="text-align:center;">Get Started</div>
+    <h2>Your pipeline diagnosis<br>starts here.</h2>
+    <p class="cta-sub">Tell us where your revenue is stalling. We'll show you what's recoverable — in 48 hours or less. No fluff. No generic playbooks. Just clarity.</p>
+    <div class="form-row">
+      <input type="email" class="form-input" placeholder="your@company.com" id="emailInput">
+      <button class="form-btn" onclick="handleSubmit()">Get Diagnosis</button>
+    </div>
+    <p class="form-note">No spam. No sales pitch. Just an honest conversation about your pipeline.</p>
+    <p id="formSuccess" style="display:none; color: var(--accent); font-weight:600; margin-top:16px; font-size:15px;">✓ We'll be in touch within 24 hours.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Revive<span>IQ</span></div>
+  <p class="footer-copy">© 2026 ReviveIQ. Built for B2B teams that refuse to leave revenue on the table.</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Pipeline diagnosis data
+  const stageData = [
+    {
+      title: "Prospecting Stage — Diagnosis Active",
+      items: [
+        { icon: "🎯", title: "ICP Targeting Drift Detected", desc: "14 of 42 prospects fall outside defined ICP parameters. Recommend re-qualification before further outreach investment.", tag: "High", tagClass: "tag-high" },
+        { icon: "✉️", title: "Cold Outreach Response Rate Below Benchmark", desc: "Current reply rate: 3.2%. Industry benchmark: 8–12%. Messaging is not creating urgency or relevance.", tag: "High", tagClass: "tag-high" },
+        { icon: "📋", title: "Missing Discovery Criteria", desc: "No defined qualification framework for moving from Prospecting → Discovery. Reps advancing deals on activity, not fit.", tag: "Med", tagClass: "tag-med" },
+      ]
+    },
+    {
+      title: "Discovery Stage — Diagnosis Active",
+      items: [
+        { icon: "❓", title: "Shallow Problem Definition", desc: "Reps identifying surface symptoms, not root business impact. Economic buyers not being engaged at this stage.", tag: "High", tagClass: "tag-high" },
+        { icon: "👤", title: "Single-Threaded Opportunities", desc: "22 of 28 deals have only one contact engaged. Risk of champion going dark with no fallback relationship.", tag: "High", tagClass: "tag-high" },
+        { icon: "📅", title: "No Defined Next Steps", desc: "7 deals have no scheduled follow-up or documented next action. Average deal age at this stage: 47 days.", tag: "Med", tagClass: "tag-med" },
+      ]
+    },
+    {
+      title: "Proposal Stage ⚠ — Critical Breakdown Detected",
+      items: [
+        { icon: "🚨", title: "High Stall Rate — 31 Deals Aging", desc: "Average age in Proposal stage: 68 days. Industry benchmark: 21 days. This is your primary revenue leak.", tag: "High", tagClass: "tag-high" },
+        { icon: "💸", title: "No Economic Buyer Aligned to Proposal", desc: "18 of 31 deals were proposed to champions without confirmed economic buyer sign-off on budget or priority.", tag: "High", tagClass: "tag-high" },
+        { icon: "🔁", title: "Generic Proposals — No Deal-Specific Value", desc: "Proposals do not map to the specific business outcomes identified in Discovery. Buyers see price, not ROI.", tag: "Med", tagClass: "tag-med" },
+      ]
+    },
+    {
+      title: "Negotiation Stage ⚠ — Revenue at Risk",
+      items: [
+        { icon: "⏸️", title: "11 Deals Gone Dark — No Response in 30+ Days", desc: "Champion disengagement without a defined re-engagement play. These deals are recoverable with the right approach.", tag: "High", tagClass: "tag-high" },
+        { icon: "📉", title: "Discounting Without Value Justification", desc: "Average discount offered: 22%. In 8 of 19 deals, discount was offered before the buyer asked — destroying leverage.", tag: "High", tagClass: "tag-high" },
+        { icon: "📝", title: "No Mutual Action Plan in Place", desc: "Deals lack a co-created close plan with the buyer. Urgency and timeline are controlled by the prospect, not the rep.", tag: "Med", tagClass: "tag-med" },
+      ]
+    },
+    {
+      title: "Closed Won — Expansion Opportunity Analysis",
+      items: [
+        { icon: "✅", title: "7 Deals Closed — Avg. Deal Size: $48K", desc: "Strong close quality. These accounts represent the highest-confidence ICP and should be used to refine top-of-funnel targeting.", tag: "Low", tagClass: "tag-low" },
+        { icon: "📈", title: "Expansion Signal: 5 of 7 Accounts Eligible", desc: "Usage patterns and stakeholder engagement indicate 5 closed accounts are ready for expansion conversation within 90 days.", tag: "Low", tagClass: "tag-low" },
+        { icon: "🔍", title: "Win Analysis Incomplete", desc: "No structured win-interview process. Missing the insights that would improve mid-funnel conversion for similar deals.", tag: "Med", tagClass: "tag-med" },
+      ]
+    }
+  ];
+
+  function selectStage(idx) {
+    document.querySelectorAll('.pipeline-stage').forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+    const data = stageData[idx];
+    document.getElementById('diagTitle').textContent = data.title;
+    const container = document.getElementById('diagItems');
+    container.innerHTML = '';
+    data.items.forEach(item => {
+      container.innerHTML += `
+        <div class="diag-item">
+          <span class="diag-icon">${item.icon}</span>
+          <div class="diag-text">
+            <h4>${item.title}</h4>
+            <p>${item.desc}</p>
+          </div>
+          <span class="diag-tag ${item.tagClass}">${item.tag}</span>
+        </div>
+      `;
+    });
+  }
+
+  selectStage(0);
+
+  function handleSubmit() {
+    const val = document.getElementById('emailInput').value;
+    if (val && val.includes('@')) {
+      document.getElementById('formSuccess').style.display = 'block';
+      document.getElementById('emailInput').value = '';
+    }
+  }
+</script>
+</body>
+</html>
