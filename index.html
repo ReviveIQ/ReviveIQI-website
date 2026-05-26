@@ -4,9 +4,20 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ReviveIQI — AI-Powered Revenue Intelligence & Consulting</title>
+<link rel="icon" type="image/jpeg" href="logo-mark.jpg"/>
+<meta name="description" content="ReviveIQI helps B2B revenue leaders diagnose where pipeline breaks down, rebuild conversion systems, and recover lost revenue."/>
+<meta property="og:title" content="ReviveIQI — AI-Powered Revenue Intelligence"/>
+<meta property="og:description" content="79% of B2B pipeline never closes. Not because of competition — because of how it breaks down. ReviveIQI finds exactly where."/>
+<meta property="og:image" content="logo-hero.jpg"/>
+<meta property="og:url" content="https://reviveiqi.com"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="ReviveIQI — AI-Powered Revenue Intelligence"/>
+<meta name="twitter:description" content="79% of B2B pipeline never closes. ReviveIQI finds exactly where it breaks."/>
+<meta name="twitter:image" content="logo-hero.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy:      #080f1e;
@@ -27,7 +38,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;}
+h1,h2,h3,h4,h5{font-family:'Manrope',sans-serif;}
 
 #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.5;}
 
@@ -41,7 +52,7 @@ h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;}
   border-bottom:1px solid var(--border);
 }
 .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;cursor:pointer;}
-.logo-wordmark{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.04em;color:#fff;line-height:1;}
+.logo-wordmark{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-0.04em;color:#fff;line-height:1;}
 .logo-wordmark em{color:var(--blue-light);font-style:normal;}
 .nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;transition:color .18s;cursor:pointer;}
@@ -94,7 +105,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 5rem;position:relative;overflow:hidden;}
 .hero-logomark{margin-bottom:2rem;animation:fadeUp .5s both;}
-.hero-logomark svg{width:72px;height:72px;filter:drop-shadow(0 0 20px rgba(37,99,235,0.5));}
+.hero-logomark img{width:100px;height:100px;object-fit:contain;filter:drop-shadow(0 0 24px rgba(37,99,235,0.6));border-radius:50%;}
 .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(37,99,235,0.12);border:1px solid rgba(96,165,250,0.25);padding:0.4rem 1.1rem;border-radius:100px;font-size:0.78rem;color:var(--blue-pale);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1.8rem;animation:fadeUp .6s .05s both;}
 .hero h1{font-size:clamp(3rem,6.5vw,5.5rem);font-weight:800;line-height:1.03;letter-spacing:-0.04em;max-width:960px;animation:fadeUp .7s .1s both;}
 .hero h1 .line-2{display:block;}
@@ -103,7 +114,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .hero-copy-wrap{position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s .1s both;}
 .hero-copy{position:absolute;width:100%;text-align:center;opacity:0;filter:blur(8px);transition:opacity 1s ease,filter 1s ease;pointer-events:none;}
 .hero-copy.active{opacity:1;filter:blur(0px);pointer-events:auto;position:relative;}
-.hero-copy h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-0.04em;max-width:900px;margin:0 auto;}
+.hero-copy h1{font-size:clamp(2rem,3.8vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;max-width:800px;margin:0 auto;}
 .hero-copy .accent{background:linear-gradient(90deg,var(--blue-light),var(--blue-pale));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-copy .hero-sub{margin-top:1.4rem;}
 .hero-source{font-size:0.7rem;color:rgba(127,149,176,0.5);margin-top:0.6rem;letter-spacing:0.03em;}
@@ -115,7 +126,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .hero-actions{display:flex;gap:1rem;margin-top:2rem;animation:fadeUp .7s .26s both;flex-wrap:wrap;justify-content:center;}
 .hero-metrics{display:flex;gap:4rem;margin-top:5rem;animation:fadeUp .7s .34s both;border-top:1px solid var(--border);padding-top:3rem;}
 .metric{text-align:center;}
-.metric-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:#fff;line-height:1;}
+.metric-num{font-family:'Manrope',sans-serif;font-size:2.4rem;font-weight:800;color:#fff;line-height:1;}
 .metric-num span{color:var(--blue-light);}
 .metric-label{font-size:0.75rem;color:var(--muted);margin-top:0.4rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
 .metric-divider{width:1px;background:var(--border);align-self:stretch;}
@@ -166,7 +177,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .p-bar{margin-bottom:1.4rem;}
 .p-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;}
 .p-bar-label{font-size:0.82rem;color:var(--text);}
-.p-bar-pct{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;}
+.p-bar-pct{font-family:'Manrope',sans-serif;font-size:0.9rem;font-weight:700;}
 .p-bar-track{height:10px;background:rgba(255,255,255,0.06);border-radius:5px;overflow:hidden;}
 .p-bar-fill{height:100%;border-radius:5px;width:0;transition:width 1.4s cubic-bezier(0.25,1,0.5,1);}
 .c-progressing{background:linear-gradient(90deg,#2563eb,#60a5fa);}
@@ -183,7 +194,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .steps-grid::before{content:'';position:absolute;top:48px;left:calc(16.66% + 20px);right:calc(16.66% + 20px);height:1px;background:linear-gradient(90deg,transparent,var(--border-hi),transparent);}
 .step-card{padding:2.5rem 2rem;border-radius:14px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(12px);position:relative;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;}
 .step-card:hover{border-color:var(--border-hi);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
-.step-number{width:44px;height:44px;border-radius:11px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--blue-light);margin-bottom:1.5rem;}
+.step-number{width:44px;height:44px;border-radius:11px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--blue-light);margin-bottom:1.5rem;}
 .step-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.6rem;}
 .step-card p{font-size:0.85rem;color:var(--muted);line-height:1.7;}
 .step-detail{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--muted);display:flex;flex-direction:column;gap:0.4rem;}
@@ -194,10 +205,10 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .proof-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
 .proof-num-card{text-align:center;padding:3rem 2rem;border-radius:14px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(12px);transition:border-color .2s,transform .2s;}
 .proof-num-card:hover{border-color:var(--border-hi);transform:translateY(-3px);}
-.proof-big{font-family:'Syne',sans-serif;font-size:3.8rem;font-weight:800;color:#fff;line-height:1;background:linear-gradient(135deg,#fff 0%,var(--blue-pale) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.proof-big{font-family:'Manrope',sans-serif;font-size:3.8rem;font-weight:800;color:#fff;line-height:1;background:linear-gradient(135deg,#fff 0%,var(--blue-pale) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .proof-num-card p{font-size:0.875rem;color:var(--muted);margin-top:0.8rem;line-height:1.55;max-width:200px;margin-left:auto;margin-right:auto;}
 .proof-quote{margin-top:3rem;padding:3rem 3.5rem;border-radius:14px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(12px);position:relative;}
-.proof-quote::before{content:'"';position:absolute;top:-0.5rem;left:2rem;font-size:6rem;color:rgba(37,99,235,0.15);font-family:'Syne',sans-serif;line-height:1;}
+.proof-quote::before{content:'"';position:absolute;top:-0.5rem;left:2rem;font-size:6rem;color:rgba(37,99,235,0.15);font-family:'Manrope',sans-serif;line-height:1;}
 .proof-quote blockquote{font-size:1.1rem;color:var(--text);line-height:1.75;font-weight:300;font-style:italic;max-width:760px;margin:0 auto;text-align:center;}
 .proof-quote cite{display:block;text-align:center;font-size:0.8rem;color:var(--blue-light);font-weight:700;margin-top:1.5rem;font-style:normal;letter-spacing:0.05em;text-transform:uppercase;}
 
@@ -206,7 +217,7 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .about-card{border-radius:16px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(16px);padding:2.5rem;position:sticky;top:100px;}
 .about-card::before{content:'';position:absolute;inset:0;border-radius:16px;background:radial-gradient(ellipse at 30% 10%,rgba(37,99,235,0.1),transparent 60%);pointer-events:none;}
 .avatar-ring{width:80px;height:80px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--blue),var(--blue-light));margin-bottom:1.5rem;}
-.avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1e3a5f,#0f172a);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;}
+.avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1e3a5f,#0f172a);display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;}
 .about-name{font-size:1.5rem;font-weight:800;}
 .about-role{font-size:0.85rem;color:var(--blue-light);font-weight:500;margin-top:0.2rem;}
 .about-loc{font-size:0.82rem;color:var(--muted);margin-top:0.3rem;}
@@ -236,7 +247,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
 .footer-left{display:flex;align-items:center;gap:1rem;}
 .footer-logo{display:flex;align-items:center;gap:0.5rem;}
 .footer-logo svg{width:22px;height:22px;}
-.footer-logo span{font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:var(--muted);}
+.footer-logo span{font-family:'Manrope',sans-serif;font-weight:800;font-size:0.9rem;color:var(--muted);}
 .footer-logo em{color:var(--blue-light);font-style:normal;}
 .footer-links{display:flex;gap:2rem;}
 .footer-links a{color:var(--muted);text-decoration:none;cursor:pointer;transition:color .15s;}
@@ -280,7 +291,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
 .price-card.recommended{border-color:rgba(37,99,235,0.4);background:linear-gradient(145deg,rgba(20,40,80,0.9),rgba(10,20,45,0.95));position:relative;}
 .price-card.recommended::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;padding:0.3rem 1rem;border-radius:0 0 8px 8px;}
 .price-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
-.price-card .amt{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1;margin:0.5rem 0;}
+.price-card .amt{font-family:'Manrope',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1;margin:0.5rem 0;}
 .price-card .per{font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;}
 .price-card ul{list-style:none;margin-bottom:2rem;}
 .price-card ul li{font-size:0.83rem;color:var(--muted);padding:0.45rem 0;display:flex;gap:0.5rem;}
@@ -331,16 +342,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
 <!-- NAV -->
 <nav id="main-nav">
   <a class="logo" href="#" onclick="showPage('home',event)">
-    <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
-      <polygon points="18,2 34,18 18,34 2,18" fill="url(#lg3)" opacity="0.4"/>
-      <polygon points="18,2 10,10 18,18 26,10" fill="url(#lg2)" opacity="0.85"/>
-      <polygon points="18,2 26,10 34,18 18,18" fill="url(#lg1)" opacity="0.6"/>
-      <polygon points="2,18 10,10 18,18 10,26" fill="url(#lg1)" opacity="0.5"/>
-      <polygon points="34,18 26,10 18,18 26,26" fill="url(#lg2)" opacity="0.7"/>
-      <polygon points="18,34 10,26 18,18 26,26" fill="url(#lg3)" opacity="0.9"/>
-      <circle cx="18" cy="18" r="3.5" fill="white" opacity="0.9"/>
-      <circle cx="18" cy="18" r="1.5" fill="#93c5fd"/>
-    </svg>
+    <img src="logo-mark.jpg" alt="ReviveIQI" style="width:36px;height:36px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 8px rgba(37,99,235,0.5));">
     <span class="logo-wordmark">ReviveIQ<em>I</em></span>
   </a>
   <ul class="nav-links">
@@ -348,7 +350,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     <li><a onclick="showPage('home',event);scrollTo('#suite')">AI Suite</a></li>
     <li><a onclick="showPage('home',event);scrollTo('#about')">About Bryan</a></li>
     <li><a onclick="showPage('resumeiq',event)">ResumeIQ</a></li>
-    <li><a onclick="showPage('pipeline',event)">Job Pipeline</a></li>
+    <li><a onclick="showPage('mycareeriq',event)">MyCareerIQ</a></li>
   </ul>
   <button class="nav-cta" onclick="showPage('home',event);scrollTo('#contact')">Book a Call →</button>
 </nav>
@@ -365,23 +367,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     <div class="hero-orb orb-2"></div>
     <div class="hero-orb orb-3"></div>
     <div class="hero-logomark">
-      <svg viewBox="0 0 72 72" fill="none">
-        <defs>
-          <linearGradient id="hlg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
-          <linearGradient id="hlg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#93c5fd"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
-          <linearGradient id="hlg3" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#1e3a5f"/></linearGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <polygon points="36,4 68,36 36,68 4,36" fill="url(#hlg3)" opacity="0.35"/>
-        <polygon points="36,4 20,20 36,36 52,20" fill="url(#hlg2)" opacity="0.9"/>
-        <polygon points="36,4 52,20 68,36 36,36" fill="url(#hlg1)" opacity="0.65"/>
-        <polygon points="4,36 20,20 36,36 20,52" fill="url(#hlg1)" opacity="0.5"/>
-        <polygon points="68,36 52,20 36,36 52,52" fill="url(#hlg2)" opacity="0.75"/>
-        <polygon points="36,68 20,52 36,36 52,52" fill="url(#hlg3)" opacity="0.95"/>
-        <circle cx="36" cy="36" r="10" fill="none" stroke="rgba(147,197,253,0.3)" stroke-width="1"/>
-        <circle cx="36" cy="36" r="6" fill="white" opacity="0.95" filter="url(#glow)"/>
-        <circle cx="36" cy="36" r="3" fill="#93c5fd"/>
-      </svg>
+      <img src="logo-hero.jpg" alt="ReviveIQI Crystal Logo"/>
     </div>
     <div class="hero-badge"><span class="pulse-dot"></span>AI-Powered Revenue Intelligence</div>
 
@@ -498,14 +484,14 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
             </div>
             <div class="app-card-arrow">→</div>
           </div>
-          <div class="app-card" onclick="showPage('pipeline',event)">
+          <div class="app-card" onclick="showPage('mycareeriq',event)">
             <div class="app-icon-wrap app-icon-blue">🔎</div>
             <div class="app-card-body">
               <div class="app-card-top">
-                <h4>Job Search Pipeline</h4>
+                <h4>MyCareerIQ</h4>
                 <span class="app-status status-dev">In Dev</span>
               </div>
-              <p>AI-powered job discovery via Adzuna, Apollo contact sourcing, Kanban application tracking, and outreach sequences—your job search runs like a sales pipeline.</p>
+              <p>AI-powered job discovery via Adzuna, direct company career pages, and Apollo contact sourcing — your job search runs like a sales pipeline.</p>
             </div>
             <div class="app-card-arrow">→</div>
           </div>
@@ -513,10 +499,21 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
             <div class="app-icon-wrap app-icon-purple">⚡</div>
             <div class="app-card-body">
               <div class="app-card-top">
-                <h4>DealForge AI</h4>
+                <h4>DealForge</h4>
                 <span class="app-status status-dev">In Dev</span>
               </div>
               <p>Takes your real deal inputs and generates ready-to-use outreach, follow-up sequences, and stakeholder re-engagement assets. No templates. No reformatting.</p>
+            </div>
+            <div class="app-card-arrow">→</div>
+          </div>
+          <div class="app-card" onclick="scrollTo('#contact')">
+            <div class="app-icon-wrap app-icon-purple">🎯</div>
+            <div class="app-card-body">
+              <div class="app-card-top">
+                <h4>ClearIQ</h4>
+                <span class="app-status status-dev">In Dev</span>
+              </div>
+              <p>Thoughtful. Adaptable. Collaborative. Fact-based. A results-driven pipeline and relationship management tool built for revenue professionals who run their book of business like a system.</p>
             </div>
             <div class="app-card-arrow">→</div>
           </div>
@@ -652,7 +649,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     </div>
     <div class="footer-links">
       <a onclick="showPage('resumeiq',event)">ResumeIQ</a>
-      <a onclick="showPage('pipeline',event)">Job Pipeline</a>
+      <a onclick="showPage('mycareeriq',event)">MyCareerIQ</a>
       <a onclick="showPage('dealforge',event)">DealForge</a>
       <a onclick="scrollTo('#about')">About</a>
       <a onclick="scrollTo('#contact')">Contact</a>
@@ -679,7 +676,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     <h1>Stop Getting Filtered Out Before a Human Sees Your Name.</h1>
     <p class="sub">ResumeIQ uses AI to transform any resume into a fully optimized, ATS-formatted Word document—with keyword gap analysis built in. Same intelligence that drives ReviveIQI consulting, applied to your career.</p>
     <div class="actions">
-      <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="btn-primary">Launch ResumeIQ →</a>
+      <a href="https://resumeiq.reviveiqi.com" target="_blank" class="btn-primary">Launch ResumeIQ →</a>
       <button class="btn-ghost" onclick="showPage('home',event)">← Back to ReviveIQI</button>
     </div>
   </div>
@@ -709,14 +706,14 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
           <div class="amt">$9<span style="font-size:1.1rem;color:var(--muted)">.99</span></div>
           <div class="per">Single resume · No subscription</div>
           <ul><li>1 optimized resume</li><li>ATS formatting</li><li>Word doc download</li><li>Keyword gap analysis</li></ul>
-          <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="prod-btn prod-btn-outline" style="display:block;text-align:center">Get Started →</a>
+          <a href="https://resumeiq.reviveiqi.com" target="_blank" class="prod-btn prod-btn-outline" style="display:block;text-align:center">Get Started →</a>
         </div>
         <div class="price-card recommended">
           <h3>Unlimited</h3>
           <div class="amt">$29<span style="font-size:1.1rem;color:var(--muted)">/mo</span></div>
           <div class="per">Unlimited resumes · Cancel anytime</div>
           <ul><li>Unlimited resumes</li><li>ATS formatting</li><li>Word doc download</li><li>Keyword gap analysis</li><li>Role targeting</li><li>Priority processing</li></ul>
-          <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="prod-btn prod-btn-solid" style="display:block;text-align:center">Start Unlimited →</a>
+          <a href="https://resumeiq.reviveiqi.com" target="_blank" class="prod-btn prod-btn-solid" style="display:block;text-align:center">Start Unlimited →</a>
         </div>
       </div>
     </div>
@@ -726,8 +723,8 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
   <div class="other-apps">
     <div class="other-apps-title">More from the ReviveIQI AI Suite</div>
     <div class="other-apps-grid">
-      <div class="mini-app-card" onclick="showPage('pipeline',event)"><div class="mini-app-icon">🔎</div><div><h5>Job Search Pipeline</h5><p>Adzuna jobs + Apollo contacts + application tracking</p></div></div>
-      <div class="mini-app-card" onclick="showPage('dealforge',event)"><div class="mini-app-icon">⚡</div><div><h5>DealForge AI</h5><p>Real deal inputs → ready-to-send outreach assets</p></div></div>
+      <div class="mini-app-card" onclick="showPage('mycareeriq',event)"><div class="mini-app-icon">🔎</div><div><h5>MyCareerIQ</h5><p>Adzuna jobs + Apollo contacts + application tracking</p></div></div>
+      <div class="mini-app-card" onclick="showPage('dealforge',event)"><div class="mini-app-icon">⚡</div><div><h5>DealForge</h5><p>Real deal inputs → ready-to-send outreach assets</p></div></div>
       <div class="mini-app-card" onclick="showPage('home',event);scrollTo('#contact')"><div class="mini-app-icon">🧠</div><div><h5>Pipeline Diagnostics Engine</h5><p>AI-powered deal-by-deal pipeline breakdown</p></div></div>
     </div>
   </div>
@@ -739,7 +736,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
         <span>ReviveIQ<em>I</em></span>
       </div>
     </div>
-    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQI</a><a onclick="showPage('pipeline',event)">Job Pipeline</a><a onclick="showPage('dealforge',event)">DealForge</a></div>
+    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQI</a><a onclick="showPage('mycareeriq',event)">MyCareerIQ</a><a onclick="showPage('dealforge',event)">DealForge</a></div>
   </footer>
 </div>
 
@@ -747,7 +744,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
 <!-- ══════════════════════════════════════
      JOB PIPELINE PAGE
 ══════════════════════════════════════ -->
-<div id="page-pipeline" class="page">
+<div id="page-mycareeriq" class="page">
   <div class="prod-page-hero">
     <div class="hero-orb orb-1"></div>
     <div class="suite-context">
@@ -757,9 +754,9 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
       <span onclick="showPage('home',event)" style="cursor:pointer;color:var(--blue-light)">View all tools →</span>
     </div>
     <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.3rem 0.75rem;border-radius:100px;background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.3);color:#fde68a;margin-bottom:1.2rem">⚡ In Development</span>
-    <div class="section-eyebrow" style="justify-content:center">Job Search Pipeline</div>
-    <h1>Your Job Search Runs Like a Sales Pipeline. Because It Should.</h1>
-    <p class="sub">AI-powered discovery, contact sourcing, stage tracking, and outreach automation—built by someone who spent 18 years running sales pipelines at the enterprise level.</p>
+    <div class="section-eyebrow" style="justify-content:center">MyCareerIQ</div>
+    <h1>Your Career. Managed Like a Sales Pipeline.</h1>
+    <p class="sub">Thoughtful. Adaptable. Collaborative. Fact-based. MyCareerIQ applies 18 years of enterprise sales intelligence to your most important pipeline — your career.</p>
     <div class="actions">
       <a href="mailto:bryan@reviveiqi.com?subject=Job+Pipeline+Early+Access" class="btn-primary">Join the Waitlist →</a>
       <button class="btn-ghost" onclick="showPage('home',event)">← Back to ReviveIQI</button>
@@ -791,7 +788,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     <div class="other-apps-title">More from the ReviveIQI AI Suite</div>
     <div class="other-apps-grid">
       <div class="mini-app-card" onclick="showPage('resumeiq',event)"><div class="mini-app-icon">📄</div><div><h5>ResumeIQ</h5><p>ATS-optimized resume in 60 seconds · Live now</p></div></div>
-      <div class="mini-app-card" onclick="showPage('dealforge',event)"><div class="mini-app-icon">⚡</div><div><h5>DealForge AI</h5><p>Real deal inputs → ready-to-send outreach assets</p></div></div>
+      <div class="mini-app-card" onclick="showPage('dealforge',event)"><div class="mini-app-icon">⚡</div><div><h5>DealForge</h5><p>Real deal inputs → ready-to-send outreach assets</p></div></div>
       <div class="mini-app-card" onclick="showPage('home',event);scrollTo('#contact')"><div class="mini-app-icon">🧠</div><div><h5>Pipeline Diagnostics Engine</h5><p>AI-powered deal-by-deal pipeline breakdown</p></div></div>
     </div>
   </div>
@@ -815,7 +812,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
       <span onclick="showPage('home',event)" style="cursor:pointer;color:var(--blue-light)">View all tools →</span>
     </div>
     <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.3rem 0.75rem;border-radius:100px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);color:#c4b5fd;margin-bottom:1.2rem">⚡ In Development</span>
-    <div class="section-eyebrow" style="justify-content:center">DealForge AI</div>
+    <div class="section-eyebrow" style="justify-content:center">DealForge</div>
     <h1>Real Deal Inputs.<br/><span class="accent">Ready-to-Use Revenue Assets.</span></h1>
     <p class="sub">Fill in what you know about a deal. DealForge generates outreach, follow-up sequences, stakeholder re-engagement assets, and objection handling—no templates, no reformatting.</p>
     <div class="actions">
@@ -849,13 +846,13 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
     <div class="other-apps-title">More from the ReviveIQI AI Suite</div>
     <div class="other-apps-grid">
       <div class="mini-app-card" onclick="showPage('resumeiq',event)"><div class="mini-app-icon">📄</div><div><h5>ResumeIQ</h5><p>ATS-optimized resume in 60 seconds · Live now</p></div></div>
-      <div class="mini-app-card" onclick="showPage('pipeline',event)"><div class="mini-app-icon">🔎</div><div><h5>Job Search Pipeline</h5><p>Adzuna jobs + Apollo contacts + stage tracking</p></div></div>
+      <div class="mini-app-card" onclick="showPage('mycareeriq',event)"><div class="mini-app-icon">🔎</div><div><h5>MyCareerIQ</h5><p>Adzuna jobs + Apollo contacts + stage tracking</p></div></div>
       <div class="mini-app-card" onclick="showPage('home',event);scrollTo('#contact')"><div class="mini-app-icon">🧠</div><div><h5>Pipeline Diagnostics Engine</h5><p>AI-powered deal-by-deal pipeline breakdown</p></div></div>
     </div>
   </div>
   <footer>
     <div class="footer-left"><div class="footer-logo"><svg viewBox="0 0 22 22" fill="none"><polygon points="11,1 21,11 11,21 1,11" fill="url(#lg3)" opacity="0.4"/><polygon points="11,1 6,6 11,11 16,6" fill="url(#lg1)" opacity="0.85"/><polygon points="11,21 6,16 11,11 16,16" fill="url(#lg3)" opacity="0.9"/><circle cx="11" cy="11" r="2" fill="white" opacity="0.9"/></svg><span>ReviveIQ<em>I</em></span></div></div>
-    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQI</a><a onclick="showPage('resumeiq',event)">ResumeIQ</a><a onclick="showPage('pipeline',event)">Job Pipeline</a></div>
+    <div class="footer-links"><a onclick="showPage('home',event)">← Back to ReviveIQI</a><a onclick="showPage('resumeiq',event)">ResumeIQ</a><a onclick="showPage('mycareeriq',event)">MyCareerIQ</a></div>
   </footer>
 </div>
 
