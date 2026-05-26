@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReviveIQ — Revenue Intelligence. Real Execution.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:   #07090E;
+    --deep:    #0C0F16;
+    --surface: #12161F;
+    --card:    #161B26;
+    --border:  #1F2736;
+    --border2: #273042;
+    --accent:  #00C896;
+    --blue:    #3B82F6;
+    --orange:  #FF6B35;
+    --purple:  #A855F7;
+    --gold:    #F59E0B;
+    --text:    #E2E8F2;
+    --muted:   #6B7A99;
+    --faint:   #3A4459;
+    --white:   #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 56px;
+    background: rgba(7,9,14,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wordmark {
+    display: flex; align-items: baseline; gap: 0;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .wordmark .iq   { color: var(--accent); }
+  .wordmark .i2   { color: var(--blue); }
+  .wordmark .tag  {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: 10px;
+    align-self: center;
+    border-left: 1px solid var(--border2);
+    padding-left: 10px;
+  }
+
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black) !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    transition: opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 140px 56px 100px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 90% 70% at 70% 30%, rgba(0,200,150,0.055) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 60% at 10% 90%, rgba(59,130,246,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(168,85,247,0.03) 0%, transparent 60%);
+  }
+
+  .hero-noise {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 0%, transparent 80%);
+  }
+
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    max-width: 1280px; margin: 0 auto; width: 100%;
+  }
+
+  .hero-left {}
+
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,200,150,0.08);
+    border: 1px solid rgba(0,200,150,0.2);
+    color: var(--accent);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .pill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 5.5vw, 76px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -2.5px;
+    color: var(--white);
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s 0.08s ease both;
+  }
+
+  h1 .line2 { color: var(--accent); }
+
+  .hero-body {
+    font-size: 18px; font-weight: 300;
+    color: var(--muted); line-height: 1.75;
+    max-width: 500px; margin-bottom: 44px;
+    animation: fadeUp 0.5s 0.16s ease both;
+  }
+
+  .hero-body strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp 0.5s 0.24s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent); color: var(--black);
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: 14px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 28px rgba(0,200,150,0.2);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,200,150,0.35); }
+
+  .btn-outline {
+    background: transparent; color: var(--text);
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; border: 1px solid var(--border2);
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--faint); color: var(--white); }
+
+  /* Hero right — product orbit visual */
+  .hero-right {
+    display: flex; justify-content: center; align-items: center;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+
+  .orbit-wrap {
+    position: relative; width: 420px; height: 420px;
+  }
+
+  .orbit-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; height: 100px;
+    background: linear-gradient(135deg, rgba(0,200,150,0.15), rgba(59,130,246,0.1));
+    border: 1px solid rgba(0,200,150,0.3);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.3px;
+    box-shadow: 0 0 60px rgba(0,200,150,0.12);
+    z-index: 2;
+  }
+
+  .orbit-center span { color: var(--accent); }
+
+  .orbit-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-ring-1 { width: 220px; height: 220px; border-color: rgba(0,200,150,0.12); }
+  .orbit-ring-2 { width: 340px; height: 340px; border-color: rgba(59,130,246,0.08); }
+  .orbit-ring-3 { width: 420px; height: 420px; border-color: rgba(255,255,255,0.04); }
+
+  .orbit-node {
+    position: absolute;
+    width: 72px; height: 72px;
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid;
+    cursor: default;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 3;
+  }
+
+  .orbit-node:hover { transform: scale(1.08); }
+
+  .orbit-node .node-icon { font-size: 20px; }
+
+  /* positions around center (210px radius center point) */
+  .n1 { top: 14px;  left: 174px; background: rgba(0,200,150,0.08); border-color: rgba(0,200,150,0.25); color: var(--accent); }
+  .n2 { top: 80px;  right: 20px; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); color: var(--blue); }
+  .n3 { bottom: 80px; right: 20px; background: rgba(255,107,53,0.08); border-color: rgba(255,107,53,0.25); color: var(--orange); }
+  .n4 { bottom: 14px; left: 174px; background: rgba(168,85,247,0.08); border-color: rgba(168,85,247,0.25); color: var(--purple); }
+  .n5 { top: 80px;  left: 20px; background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); color: var(--gold); }
+
+  /* ── MISSION STRIP ── */
+  .mission-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 56px;
+    display: flex; align-items: center; gap: 24px;
+    background: var(--deep);
+  }
+
+  .mission-mark {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mission-divider {
+    width: 1px; height: 32px;
+    background: var(--border2); flex-shrink: 0;
+  }
+
+  .mission-text {
+    font-size: 17px; font-weight: 300;
+    color: var(--text); line-height: 1.6;
+    max-width: 860px;
+  }
+
+  .mission-text strong { font-weight: 600; color: var(--white); }
+
+  /* ── SECTION BASE ── */
+  .section { padding: 100px 56px; max-width: 1280px; margin: 0 auto; }
+  .section-full { padding: 100px 56px; }
+
+  .label {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 800; letter-spacing: -1.5px;
+    color: var(--white); line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 17px; color: var(--muted);
+    font-weight: 300; line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ── PRODUCTS ── */
+  .products-section {
+    padding: 100px 56px;
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .products-header {
+    max-width: 1280px; margin: 0 auto 64px;
+  }
+
+  .products-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .product-card {
+    background: var(--card);
+    padding: 44px 40px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .product-card:hover { background: var(--surface); }
+
+  .product-card.span2 { grid-column: span 2; }
+
+  /* accent top bar */
+  .product-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .product-card:hover::after { opacity: 1; }
+  .product-card.c-green::after  { background: var(--accent); }
+  .product-card.c-blue::after   { background: var(--blue); }
+  .product-card.c-orange::after { background: var(--orange); }
+  .product-card.c-purple::after { background: var(--purple); }
+  .product-card.c-gold::after   { background: var(--gold); }
+
+  .product-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; margin-bottom: 24px;
+  }
+
+  .product-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .ic-green  { background: rgba(0,200,150,0.1);  border: 1px solid rgba(0,200,150,0.2); }
+  .ic-blue   { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); }
+  .ic-orange { background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); }
+  .ic-purple { background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.2); }
+  .ic-gold   { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); }
+
+  .product-badge {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .badge-live   { background: rgba(0,200,150,0.12); color: var(--accent);  border: 1px solid rgba(0,200,150,0.25); }
+  .badge-dev    { background: rgba(59,130,246,0.12); color: var(--blue);   border: 1px solid rgba(59,130,246,0.25); }
+  .badge-soon   { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border2); }
+
+  .product-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--white); letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .product-desc {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.7; flex: 1;
+    margin-bottom: 28px;
+  }
+
+  .product-footer {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  .product-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 700;
+    color: var(--white);
+  }
+
+  .product-price .price-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 400;
+    color: var(--muted); display: block;
+  }
+
+  .product-link {
+    font-size: 13px; font-weight: 600;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 6px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .product-link:hover { opacity: 0.8; transform: translateX(2px); }
+  .pl-green  { background: rgba(0,200,150,0.12);  color: var(--accent); }
+  .pl-blue   { background: rgba(59,130,246,0.12); color: var(--blue); }
+  .pl-orange { background: rgba(255,107,53,0.12); color: var(--orange); }
+  .pl-purple { background: rgba(168,85,247,0.12); color: var(--purple); }
+  .pl-gold   { background: rgba(245,158,11,0.12); color: var(--gold); }
+
+  .product-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .ptag {
+    font-size: 11px; font-weight: 500;
+    color: var(--faint);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 3px 9px; border-radius: 4px;
+  }
+
+  /* ── WHO WE SERVE ── */
+  .serve-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 60px;
+  }
+
+  .serve-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 32px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .serve-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-4px);
+  }
+
+  .serve-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--faint); margin-bottom: 16px;
+  }
+
+  .serve-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--white); letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .serve-card p {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .serve-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .stag {
+    font-size: 11px; font-weight: 500; color: var(--muted);
+    background: var(--deep); border: 1px solid var(--border);
+    padding: 3px 9px; border-radius: 4px;
+  }
+
+  /* ── ABOUT FOUNDER ── */
+  .about-section {
+    padding: 100px 56px;
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 80px; align-items: center;
+  }
+
+  .founder-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .founder-avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+    color: var(--black); margin: 0 auto 20px;
+  }
+
+  .founder-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--white); letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .founder-title { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+  .founder-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .fstat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 12px;
+  }
+
+  .fstat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--white); display: block;
+    line-height: 1;
+  }
+  .fstat-num span { color: var(--accent); }
+
+  .fstat-label { font-size: 11px; color: var(--muted); margin-top: 4px; display: block; }
+
+  .about-content h2 { margin-bottom: 20px; }
+
+  .about-content p {
+    font-size: 16px; color: var(--muted); line-height: 1.8;
+    margin-bottom: 16px; font-weight: 300;
+  }
+
+  .about-content p strong { color: var(--text); font-weight: 500; }
+
+  .about-content p:last-of-type { margin-bottom: 32px; }
+
+  .values-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .value-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 16px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .value-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .value-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .value-text strong { color: var(--text); font-weight: 600; }
+
+  /* ── CTA ── */
+  .cta-wrap {
+    padding: 120px 56px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+
+  .cta-glow {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,200,150,0.055) 0%, transparent 70%);
+  }
+
+  .cta-inner {
+    position: relative; z-index: 1;
+    max-width: 620px; margin: 0 auto;
+  }
+
+  .cta-inner h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 18px; }
+
+  .cta-sub {
+    font-size: 17px; color: var(--muted);
+    font-weight: 300; line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 56px 40px;
+  }
+
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .wordmark { margin-bottom: 10px; display: inline-flex; }
+
+  .footer-tagline {
+    font-size: 13px; color: var(--muted); font-weight: 300; max-width: 260px;
+  }
+
+  .footer-cols { display: flex; gap: 64px; }
+
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--faint); margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col a {
+    font-size: 14px; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--text); }
+
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-copy { font-size: 12px; color: var(--muted); }
+
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: var(--muted); text-decoration: none; }
+  .footer-legal a:hover { color: var(--text); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 16px 32px; }
+    nav ul { display: none; }
+    .hero { padding: 120px 32px 80px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+    .orbit-wrap { width: 320px; height: 320px; }
+    .mission-strip { padding: 40px 32px; flex-direction: column; gap: 16px; }
+    .products-section { padding: 80px 32px; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .product-card.span2 { grid-column: span 1; }
+    .section { padding: 80px 32px; }
+    .serve-grid { grid-template-columns: 1fr; }
+    .about-section { padding: 80px 32px; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .cta-wrap { padding: 80px 32px; }
+    footer { padding: 40px 32px; }
+    .footer-top { flex-direction: column; gap: 36px; }
+    .footer-cols { gap: 40px; }
+  }
+
+  @media (max-width: 640px) {
+    h1 { letter-spacing: -1.5px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .orbit-wrap { width: 280px; height: 280px; }
+    .footer-cols { flex-direction: column; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="wordmark">Revive<span class="iq">IQ</span><span class="i2">I</span><span class="tag">LLC</span></a>
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#who">Who We Serve</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://calendly.com/bryan-greer1/reviveiqi-discovery-call" target="_blank" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-pill"><span class="pill-dot"></span>Revenue Intelligence Company</div>
+      <h1>Where Intelligence<br><span class="line2">Meets Execution.</span></h1>
+      <p class="hero-body">
+        ReviveIQ builds the tools, systems, and strategies that turn <strong>stalled pipeline into closed revenue</strong> — and give every sales team the intelligence to grow without guessing.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary">
+          Explore Our Products
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-outline">
+          Work With Us
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="orbit-wrap">
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+        <div class="orbit-center">Revive<span>IQ</span>I</div>
+        <div class="orbit-node n1"><span class="node-icon">📄</span>ResumeIQ</div>
+        <div class="orbit-node n2"><span class="node-icon">🔍</span>Job Pipeline</div>
+        <div class="orbit-node n3"><span class="node-icon">⚡</span>DealForge</div>
+        <div class="orbit-node n4"><span class="node-icon">🧠</span>Diagnostics</div>
+        <div class="orbit-node n5"><span class="node-icon">🛠️</span>Build With Me</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip">
+  <span class="mission-mark">Our Mission</span>
+  <div class="mission-divider"></div>
+  <p class="mission-text">
+    ReviveIQ LLC builds <strong>revenue intelligence tools and services</strong> that diagnose where deals break, rebuild the systems that let growth stall, and give B2B teams the clarity to close — consistently, repeatably, and at scale.
+  </p>
+</div>
+
+<!-- STATS STRIP -->
+<div style="display:flex; border-bottom: 1px solid var(--border); overflow:hidden;">
+  <div style="flex:1; padding:36px 48px; border-right:1px solid var(--border); transition: background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='transparent'">
+    <span style="font-family:'Syne',sans-serif; font-size:38px; font-weight:800; color:var(--white); display:block; line-height:1; margin-bottom:6px;">$7<span style="color:var(--accent);">M+</span></span>
+    <span style="font-size:13px; color:var(--muted);">renewal & expansion revenue driven</span>
+  </div>
+  <div style="flex:1; padding:36px 48px; border-right:1px solid var(--border); transition: background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='transparent'">
+    <span style="font-family:'Syne',sans-serif; font-size:38px; font-weight:800; color:var(--white); display:block; line-height:1; margin-bottom:6px;">Top <span style="color:var(--accent);">0.3%</span></span>
+    <span style="font-size:13px; color:var(--muted);">national performance ranking in enterprise SaaS</span>
+  </div>
+  <div style="flex:1; padding:36px 48px; border-right:1px solid var(--border); transition: background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='transparent'">
+    <span style="font-family:'Syne',sans-serif; font-size:38px; font-weight:800; color:var(--white); display:block; line-height:1; margin-bottom:6px;">79<span style="color:var(--accent);">%</span></span>
+    <span style="font-size:13px; color:var(--muted);">of B2B pipeline never closes — not from competition, from breakdown</span>
+  </div>
+  <div style="flex:1; padding:36px 48px; transition: background 0.3s;" onmouseover="this.style.background='var(--surface)'" onmouseout="this.style.background='transparent'">
+    <span style="font-family:'Syne',sans-serif; font-size:38px; font-weight:800; color:var(--white); display:block; line-height:1; margin-bottom:6px;">18<span style="color:var(--accent);">yr</span></span>
+    <span style="font-size:13px; color:var(--muted);">enterprise revenue leadership — SDR to multi-state SaaS leader</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="products-header reveal">
+    <div class="label">The Suite</div>
+    <h2>Five products.<br>One company. Zero guesswork.</h2>
+    <p class="section-sub">Every product in the ReviveIQ suite is built to solve a real, specific revenue problem — from the first resume to the last stalled deal.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- ResumeIQ -->
+    <div class="product-card c-green reveal">
+      <div class="product-top">
+        <div class="product-icon ic-green">📄</div>
+        <span class="product-badge badge-live">Live</span>
+      </div>
+      <div class="product-name">ResumeIQ</div>
+      <div class="product-tags">
+        <span class="ptag">ATS Optimization</span>
+        <span class="ptag">AI Parsing</span>
+        <span class="ptag">Word Doc Output</span>
+      </div>
+      <p class="product-desc">Upload any resume. Get back a polished, ATS-optimized Word document built to pass automated screeners and land in front of humans. Powered by GPT-4o.</p>
+      <div class="product-footer">
+        <div class="product-price">
+          $9.99 / $29<span class="price-sub">one-time or monthly unlimited</span>
+        </div>
+        <a href="https://resumeiq-production-d97e.up.railway.app" target="_blank" class="product-link pl-green">
+          Launch <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Job Search Pipeline -->
+    <div class="product-card c-blue reveal reveal-delay-1">
+      <div class="product-top">
+        <div class="product-icon ic-blue">🔍</div>
+        <span class="product-badge badge-dev">In Development</span>
+      </div>
+      <div class="product-name">Job Search Pipeline</div>
+      <div class="product-tags">
+        <span class="ptag">AI Job Discovery</span>
+        <span class="ptag">Contact Sourcing</span>
+        <span class="ptag">Kanban Tracker</span>
+      </div>
+      <p class="product-desc">AI-powered job discovery using Adzuna + Apollo contact sourcing. Tracks every application through a full Kanban pipeline with outreach sequences and direct ATS links.</p>
+      <div class="product-footer">
+        <div class="product-price">
+          Coming Soon<span class="price-sub">early access available</span>
+        </div>
+        <a href="#contact" class="product-link pl-blue">
+          Get Early Access <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- DealForge AI -->
+    <div class="product-card c-orange reveal reveal-delay-2">
+      <div class="product-top">
+        <div class="product-icon ic-orange">⚡</div>
+        <span class="product-badge badge-dev">In Development</span>
+      </div>
+      <div class="product-name">DealForge AI</div>
+      <div class="product-tags">
+        <span class="ptag">Outreach Sequences</span>
+        <span class="ptag">Deal Intelligence</span>
+        <span class="ptag">Stakeholder Re-Engagement</span>
+      </div>
+      <p class="product-desc">Input real deal context — company, stage, objections, stakeholders. Get back ready-to-use outreach sequences, follow-up cadences, and stakeholder re-engagement assets built for that exact deal.</p>
+      <div class="product-footer">
+        <div class="product-price">
+          Coming Soon<span class="price-sub">notify me on launch</span>
+        </div>
+        <a href="#contact" class="product-link pl-orange">
+          Get Notified <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pipeline Diagnostics Engine - SPAN 2 -->
+    <div class="product-card c-purple span2 reveal">
+      <div class="product-top">
+        <div class="product-icon ic-purple">🧠</div>
+        <span class="product-badge badge-soon">Coming Soon</span>
+      </div>
+      <div class="product-name">Pipeline Diagnostics Engine</div>
+      <div class="product-tags">
+        <span class="ptag">Pipeline Upload</span>
+        <span class="ptag">AI Deal Analysis</span>
+        <span class="ptag">Recovery Strategy</span>
+        <span class="ptag">Executive Report</span>
+      </div>
+      <p class="product-desc">Upload your stalled pipeline. ReviveIQ's AI engine produces a deal-by-deal breakdown — diagnosing why each opportunity broke, scoring recovery potential, and mapping a specific reconnection strategy for every account. Get an executive summary your leadership team can act on in 48 hours.</p>
+      <div class="product-footer">
+        <div class="product-price">
+          Coming Soon<span class="price-sub">enterprise & team pricing</span>
+        </div>
+        <a href="#contact" class="product-link pl-purple">
+          Join Waitlist <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Build With Me -->
+    <div class="product-card c-gold reveal reveal-delay-1">
+      <div class="product-top">
+        <div class="product-icon ic-gold">🛠️</div>
+        <span class="product-badge badge-soon">Coming Soon</span>
+      </div>
+      <div class="product-name">Build With Me</div>
+      <div class="product-tags">
+        <span class="ptag">Done-With-You</span>
+        <span class="ptag">App Development</span>
+        <span class="ptag">Coaching</span>
+      </div>
+      <p class="product-desc">Want to build your own app but don't know where to start? We sit alongside you — hands on keyboard — and build it together until you're fully capable of running it yourself. Not a course. Not a template. A real build, with a real partner.</p>
+      <div class="product-footer">
+        <div class="product-price">
+          Pricing TBD<span class="price-sub">express interest below</span>
+        </div>
+        <a href="#contact" class="product-link pl-gold">
+          Express Interest <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="who">
+  <div class="section">
+    <div class="reveal">
+      <div class="label">Who We Serve</div>
+      <h2>Built for teams that refuse<br>to leave revenue on the table.</h2>
+      <p class="section-sub">ReviveIQ's products are purpose-built for three distinct markets — each with a different problem, the same need for clarity.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card reveal">
+        <div class="serve-num">Primary</div>
+        <h3>Growth-Stage B2B SaaS</h3>
+        <p>You have pipeline. You have a sales team. But deals stall, forecasts lie, and conversion is unpredictable. ReviveIQ diagnoses where the system broke and rebuilds it.</p>
+        <div class="serve-tags">
+          <span class="stag">$2M–$20M ARR</span>
+          <span class="stag">Series A/B</span>
+          <span class="stag">5–25 AEs</span>
+        </div>
+      </div>
+      <div class="serve-card reveal reveal-delay-1">
+        <div class="serve-num">Secondary</div>
+        <h3>EdTech & GovTech</h3>
+        <p>Long sales cycles, complex stakeholder maps, and procurement friction create the exact environment where pipeline goes dark. We know how to revive it.</p>
+        <div class="serve-tags">
+          <span class="stag">District Sales</span>
+          <span class="stag">Procurement Cycles</span>
+          <span class="stag">Multi-Stakeholder</span>
+        </div>
+      </div>
+      <div class="serve-card reveal reveal-delay-2">
+        <div class="serve-num">Tertiary</div>
+        <h3>Founder-Led SaaS</h3>
+        <p>You're closing deals yourself, but the process lives in your head. ReviveIQ helps you systematize what's working, identify what isn't, and build a machine that scales without you in every call.</p>
+        <div class="serve-tags">
+          <span class="stag">Pre-Sales Hire</span>
+          <span class="stag">0–1 AEs</span>
+          <span class="stag">Process Building</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="founder-card">
+        <div class="founder-avatar">BG</div>
+        <div class="founder-name">Bryan Michael Greer</div>
+        <div class="founder-title">Founder & CEO — ReviveIQ LLC</div>
+        <div class="founder-stats">
+          <div class="fstat">
+            <span class="fstat-num">18<span>yr</span></span>
+            <span class="fstat-label">Enterprise Revenue</span>
+          </div>
+          <div class="fstat">
+            <span class="fstat-num">$7<span>M+</span></span>
+            <span class="fstat-label">Revenue Recovered</span>
+          </div>
+          <div class="fstat">
+            <span class="fstat-num">Top<span> 0.3%</span></span>
+            <span class="fstat-label">National Performance</span>
+          </div>
+          <div class="fstat">
+            <span class="fstat-num">5</span>
+            <span class="fstat-label">Products Built</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal reveal-delay-1">
+      <div class="label">The Founder</div>
+      <h2>Built by someone who's<br>lived the problem.</h2>
+      <p>Bryan Greer built his career turning complexity into outcomes — growing from front-line SDR work into a <strong>multi-state SaaS leader</strong> trusted to drive multimillion-dollar expansion, unify fragmented systems, and win at the district and enterprise level.</p>
+      <p>After an unexpected reset, he channeled that same builder mindset into ReviveIQ — a company born from the conviction that <strong>most revenue isn't lost, it's just broken</strong>. And broken things can be fixed.</p>
+      <div class="values-list">
+        <div class="value-item">
+          <span class="value-icon">💬</span>
+          <span class="value-text"><strong>Communication solves 80% of any issue.</strong> Miscommunication causes 100% of them. Every product we build is designed to create clarity where confusion costs money.</span>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🎯</span>
+          <span class="value-text"><strong>The quality of your outcome depends on the quality of your questions.</strong> What do you actually want to know? What's the intent? What's the preferred outcome?</span>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🔨</span>
+          <span class="value-text"><strong>Put your heart and mind into everything you build.</strong> Half measures produce half results. ReviveIQ ships products that are complete, intentional, and built to last.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-wrap" id="contact">
+  <div class="cta-glow"></div>
+  <div class="cta-inner reveal">
+    <div class="label" style="text-align:center;">Let's Talk</div>
+    <h2>Ready to stop leaving revenue behind?</h2>
+    <p class="cta-sub">Whether you need a pipeline diagnosis, want early access to a product, or want to build something of your own — we want to hear from you.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/bryan-greer1/reviveiqi-discovery-call" target="_blank" class="btn-primary">
+        📅 Book a Discovery Call
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:bryan@reviveiqi.com" class="btn-outline">✉️ Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="wordmark">Revive<span class="iq">IQ</span><span class="i2">I</span></a>
+      <p class="footer-tagline">Revenue Intelligence. Real Execution. Built in Fort Lauderdale, FL.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="https://resumeiq-production-d97e.up.railway.app" target="_blank">ResumeIQ</a></li>
+          <li><a href="#contact">Job Search Pipeline</a></li>
+          <li><a href="#contact">DealForge AI</a></li>
+          <li><a href="#contact">Pipeline Diagnostics</a></li>
+          <li><a href="#contact">Build With Me</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#who">Who We Serve</a></li>
+          <li><a href="https://github.com/ReviveIQ" target="_blank">GitHub</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 ReviveIQ LLC. All rights reserved. Fort Lauderdale, Florida. · <a href="mailto:bryan@reviveiqi.com" style="color:var(--muted);text-decoration:none;">bryan@reviveiqi.com</a></p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
