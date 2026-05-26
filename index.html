@@ -99,8 +99,20 @@ section{padding:7rem 4rem;position:relative;z-index:1;}
 .hero h1{font-size:clamp(3rem,6.5vw,5.5rem);font-weight:800;line-height:1.03;letter-spacing:-0.04em;max-width:960px;animation:fadeUp .7s .1s both;}
 .hero h1 .line-2{display:block;}
 .hero h1 .accent{background:linear-gradient(90deg,var(--blue-light),var(--blue-pale));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:clamp(1rem,2vw,1.18rem);color:var(--muted);max-width:600px;line-height:1.75;margin-top:1.6rem;animation:fadeUp .7s .18s both;font-weight:300;}
-.hero-actions{display:flex;gap:1rem;margin-top:2.8rem;animation:fadeUp .7s .26s both;flex-wrap:wrap;justify-content:center;}
+.hero-sub{font-size:clamp(1rem,2vw,1.18rem);color:var(--muted);max-width:600px;line-height:1.75;margin-top:1.6rem;font-weight:300;}
+.hero-copy-wrap{position:relative;min-height:220px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s .1s both;}
+.hero-copy{position:absolute;width:100%;text-align:center;opacity:0;filter:blur(8px);transition:opacity 1s ease,filter 1s ease;pointer-events:none;}
+.hero-copy.active{opacity:1;filter:blur(0px);pointer-events:auto;position:relative;}
+.hero-copy h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-0.04em;max-width:900px;margin:0 auto;}
+.hero-copy .accent{background:linear-gradient(90deg,var(--blue-light),var(--blue-pale));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-copy .hero-sub{margin-top:1.4rem;}
+.hero-source{font-size:0.7rem;color:rgba(127,149,176,0.5);margin-top:0.6rem;letter-spacing:0.03em;}
+.hero-source a{color:rgba(96,165,250,0.5);text-decoration:none;}
+.hero-source a:hover{color:var(--blue-light);}
+.hero-dots{display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem;animation:fadeUp .7s .3s both;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--border-hi);cursor:pointer;transition:background .2s,transform .2s;}
+.hero-dot.active{background:var(--blue-light);transform:scale(1.3);}
+.hero-actions{display:flex;gap:1rem;margin-top:2rem;animation:fadeUp .7s .26s both;flex-wrap:wrap;justify-content:center;}
 .hero-metrics{display:flex;gap:4rem;margin-top:5rem;animation:fadeUp .7s .34s both;border-top:1px solid var(--border);padding-top:3rem;}
 .metric{text-align:center;}
 .metric-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:#fff;line-height:1;}
@@ -372,11 +384,30 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
       </svg>
     </div>
     <div class="hero-badge"><span class="pulse-dot"></span>AI-Powered Revenue Intelligence</div>
-    <h1>
-      Where Revenue Intelligence
-      <span class="line-2"><span class="accent">Meets Real Execution.</span></span>
-    </h1>
-    <p class="hero-sub">ReviveIQI is your AI-powered consulting partner—diagnosing broken pipelines, building recovery systems, and deploying intelligent tools that turn stalled opportunities into closed revenue.</p>
+
+    <!-- Rotating hero copy -->
+    <div class="hero-copy-wrap">
+      <div class="hero-copy active">
+        <h1>79% of B2B pipeline<br/><span class="accent">never closes.</span></h1>
+        <p class="hero-sub">Not because of competition. Because of how it breaks down. The revenue was there. The team was there. Something in the motion failed — and nobody diagnosed it.</p>
+        <p class="hero-source">Source: <a href="https://www.ebsta.com/ebsta-pavilion-b2b-sales-benchmarks-2024/" target="_blank">Ebsta x Pavilion 2024 B2B Sales Benchmark Report</a> · 4.2M opportunities · $54B in pipeline</p>
+      </div>
+      <div class="hero-copy">
+        <h1>Every quarter teaches you<br/><span class="accent">where revenue breaks.</span></h1>
+        <p class="hero-sub">Most teams never find out what. They add headcount, run more campaigns, rebuild the CRM — and the same breakdown happens again next quarter, in a different deal, at a different stage.</p>
+      </div>
+      <div class="hero-copy">
+        <h1>The best revenue leaders<br/><span class="accent">diagnose it first.</span></h1>
+        <p class="hero-sub">They don't avoid pipeline breakdown — they find it, name it, and build systems that stop it from compounding. That's exactly what ReviveIQI helps you do.</p>
+      </div>
+    </div>
+    <!-- Dot indicators -->
+    <div class="hero-dots">
+      <div class="hero-dot active" onclick="setHeroCopy(0)"></div>
+      <div class="hero-dot" onclick="setHeroCopy(1)"></div>
+      <div class="hero-dot" onclick="setHeroCopy(2)"></div>
+    </div>
+
     <div class="hero-actions">
       <button class="btn-primary" onclick="scrollTo('#contact')">Book a Discovery Call →</button>
       <button class="btn-ghost" onclick="scrollTo('#suite')">Explore the AI Suite</button>
@@ -602,7 +633,7 @@ footer{padding:2rem 4rem;border-top:1px solid var(--border);display:flex;align-i
         <h2>Ready to recover your<br/><span class="accent">stalled pipeline?</span></h2>
         <p>A 30-minute discovery call is all it takes to identify whether ReviveIQI can unlock revenue you've already earned—but haven't closed yet. No pitch. Just a real diagnosis.</p>
         <div class="cta-group">
-          <a href="https://calendly.com/reviveiqi" target="_blank" class="btn-primary">📅 Book a Discovery Call</a>
+          <a href="https://calendly.com/bryan-greer1/reviveiqi-discovery-call" target="_blank" class="btn-primary">📅 Book a Discovery Call</a>
           <a href="mailto:bryan@reviveiqi.com" class="btn-ghost">✉️ Send an Email</a>
         </div>
         <p class="contact-note">Or reach out directly: <a href="mailto:bryan@reviveiqi.com">bryan@reviveiqi.com</a> · Fort Lauderdale, FL</p>
@@ -890,6 +921,28 @@ function initBars(){
   },{threshold:0.3});
   obs.observe(viz);
 }
+
+// HERO COPY ROTATION
+let heroCurrent = 0;
+let heroTimer;
+const heroCopies = document.querySelectorAll('.hero-copy');
+const heroDots = document.querySelectorAll('.hero-dot');
+
+function setHeroCopy(index) {
+  heroCopies[heroCurrent].classList.remove('active');
+  heroDots[heroCurrent].classList.remove('active');
+  heroCurrent = index;
+  heroCopies[heroCurrent].classList.add('active');
+  heroDots[heroCurrent].classList.add('active');
+  clearInterval(heroTimer);
+  heroTimer = setInterval(nextHeroCopy, 8000);
+}
+
+function nextHeroCopy() {
+  setHeroCopy((heroCurrent + 1) % heroCopies.length);
+}
+
+heroTimer = setInterval(nextHeroCopy, 8000);
 
 initReveal();
 initBars();
