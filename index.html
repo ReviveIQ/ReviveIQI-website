@@ -296,6 +296,9 @@
     text-transform: uppercase;
     border: 1px solid;
     cursor: default;
+  }
+  a.orbit-node { cursor: pointer; }
+  a.orbit-node:hover { transform: scale(1.1); box-shadow: 0 0 0 2px rgba(255,255,255,0.1); }
     transition: transform 0.3s, box-shadow 0.3s;
     z-index: 3;
   }
@@ -307,6 +310,7 @@
   /* positions around center (210px radius center point) */
   .n1 { top: 14px;  left: 174px; background: rgba(0,200,150,0.08); border-color: rgba(0,200,150,0.25); color: var(--accent); }
   .n2 { top: 80px;  right: 20px; background: rgba(59,130,246,0.08); border-color: rgba(59,130,246,0.25); color: var(--blue); }
+  .n6 { bottom: 80px; left: 20px; background: rgba(139,92,246,0.08); border-color: rgba(139,92,246,0.25); color: #a78bfa; }
   .n3 { bottom: 80px; right: 20px; background: rgba(255,107,53,0.08); border-color: rgba(255,107,53,0.25); color: var(--orange); }
   .n4 { bottom: 14px; left: 174px; background: rgba(168,85,247,0.08); border-color: rgba(168,85,247,0.25); color: var(--purple); }
   .n5 { top: 80px;  left: 20px; background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); color: var(--gold); }
@@ -789,8 +793,9 @@
         <div class="orbit-ring orbit-ring-2"></div>
         <div class="orbit-ring orbit-ring-3"></div>
         <div class="orbit-center">Revive<span>IQ</span>I</div>
-        <div class="orbit-node n1"><span class="node-icon">📄</span>ResumeIQ</div>
-        <div class="orbit-node n2"><span class="node-icon">🔍</span>Job Pipeline</div>
+        <a href="https://resumeiq.reviveiqi.com" target="_blank" class="orbit-node n1" style="cursor:pointer;text-decoration:none"><span class="node-icon">📄</span>ResumeIQ</a>
+        <a href="https://mycareeriq.reviveiqi.com" target="_blank" class="orbit-node n2" style="cursor:pointer;text-decoration:none"><span class="node-icon">🔍</span>Job Pipeline</a>
+        <a href="https://inboxiq.reviveiqi.com" target="_blank" class="orbit-node n6" style="cursor:pointer;text-decoration:none"><span class="node-icon">📬</span>InboxIQ</a>
         <div class="orbit-node n3"><span class="node-icon">⚡</span>DealForge</div>
         <div class="orbit-node n4"><span class="node-icon">🧠</span>Diagnostics</div>
         <div class="orbit-node n5"><span class="node-icon">🛠️</span>Build With Me</div>
