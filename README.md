@@ -1,130 +1,53 @@
-# ReviveIQI Website
+# ReviveIQI
 
-**Live at:** [reviveiqi.com](https://reviveiqi.com)  
-**Hosted:** GitHub Pages · Auto-deploys from `main` branch  
-**Domain Registrar:** Namecheap · DNS configured and verified
+**Where Revenue Intelligence Meets Real Execution.**
 
----
+ReviveIQI is an AI-powered product suite covering the full revenue lifecycle — helping job seekers land faster and helping B2B sales teams diagnose where deals break, recover stalled pipeline, and close with clarity.
 
-## What This Is
-
-The official marketing website for **ReviveIQI** — an AI-powered revenue intelligence consulting firm founded by Bryan Michael Greer (Fort Lauderdale, FL). The site serves as the central hub for the ReviveIQI brand, consulting services, and AI product suite.
+**Website:** [reviveiqi.com](https://reviveiqi.com)
 
 ---
 
-## Pages
+## The suite
 
-| Page | Route | Status |
-|------|-------|--------|
-| Home | `/` | ✅ Live |
-| ResumeIQ | `#resumeiq` (SPA) | ✅ Live |
-| Job Search Pipeline | `#pipeline` (SPA) | ✅ Live |
-| DealForge AI | `#dealforge` (SPA) | ✅ Live |
+| Product | Status | What it does | URL |
+|---|---|---|---|
+| **ResumeIQ** | ✅ Live | AI-powered resume transformation + ATS optimization + Working With Me | [resumeiq.reviveiqi.com](https://resumeiq.reviveiqi.com) |
+| **MyCareerIQ** | ✅ Live | AI job search pipeline — research, cover letters, outreach, tracking | [mycareeriq.reviveiqi.com](https://mycareeriq.reviveiqi.com) |
+| **InboxIQ** | ✅ Live | Email inbox intelligence — surfaces hidden revenue opportunities | [inboxiq.reviveiqi.com](https://inboxiq.reviveiqi.com) |
+| **Pipeline Diagnostics** | 🔜 In Development | B2B pipeline diagnostic and recovery tool | [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com) |
+| **DealForgeAI** | 🔜 In Development | B2B sales pipeline recovery and deal rescue | — |
+| **ReviveIQI Core** | ✅ Live | B2B consulting — "Build With Me" revenue recovery engagements | [reviveiqi.com](https://reviveiqi.com) |
 
-> The site is a single-page application (`index.html`). Navigation between pages is handled by JavaScript — no server routing required.
+## Why it exists
 
----
+The numbers are clear. According to the Ebsta × Pavilion 2024 B2B Sales Benchmark (4.2M opportunities, $54B in pipeline analyzed):
 
-## Tech Stack
+- **79%** of B2B pipeline never closes — not from competition, from process breakdown
+- **17%** of reps generate 81% of revenue — the system is broken, not the people
+- **38%** longer sales cycles vs 2021, win rates down 27% in the same period
+- **21%** average B2B win rate — 4 in 5 deals are already lost before they start
 
-- **Pure HTML + CSS + Vanilla JS** — no build step, no dependencies
-- **Fonts:** Syne (headings) + DM Sans (body) via Google Fonts
-- **Animations:** CSS keyframes + IntersectionObserver scroll reveals
-- **Background:** HTML5 Canvas particle network with mouse repulsion
-- **Logo:** Inline SVG — geometric faceted diamond mark, no external assets
+ReviveIQI was built to fix this — starting at the individual level (resume, job search, inbox) and scaling to the team and organization level (pipeline diagnostics, deal recovery, B2B consulting).
 
----
+## The founder
 
-## Brand
+**Bryan Michael Greer** — Fort Lauderdale, Florida  
+18 years in enterprise SaaS sales. SDR → multi-state regional leader. $7M+ ARR driven personally. Top 0.3% national performance ranking. After an unexpected reset, channeled that experience into building the tools he wished existed.
 
-| Token | Value |
-|-------|-------|
-| Navy (deep) | `#080f1e` |
-| Navy (mid) | `#0f172a` |
-| Navy (card) | `#1e3a5f` |
-| Blue (primary) | `#2563eb` |
-| Blue (mid) | `#3b82f6` |
-| Blue (light) | `#60a5fa` |
-| Blue (pale) | `#93c5fd` |
-| Heading font | Syne 800 |
-| Body font | DM Sans 300–500 |
+Contact: [bryan@reviveiqi.com](mailto:bryan@reviveiqi.com)  
+Consulting: [calendly.com/bryan-greer1/reviveiqi-discovery-call](https://calendly.com/bryan-greer1/reviveiqi-discovery-call)
 
-**Tagline:** "Where Revenue Intelligence Meets Real Execution"
+## Infrastructure
 
----
-
-## Project Structure
-
-```
-ReviveIQI-website/
-├── index.html      # Full site — all pages, styles, and scripts
-├── CNAME           # GitHub Pages custom domain → reviveiqi.com
-└── README.md       # This file
-```
+- **Hosting:** Railway (all products) + GitHub Pages (reviveiqi.com)
+- **Database:** TiDB Cloud (pipeline-production cluster, gateway01.us-east-1)
+- **Auth:** Custom JWT (ResumeIQ) · jose JWT (MyCareerIQ, InboxIQ)
+- **AI:** OpenAI GPT-4o + GPT-4o-mini (separate keys per product)
+- **Payments:** Stripe (live keys)
+- **Email:** Resend (ResumeIQ, InboxIQ) · Gmail SMTP (MyCareerIQ)
+- **GitHub org:** [github.com/ReviveIQ](https://github.com/ReviveIQ)
 
 ---
 
-## Deployment
-
-### GitHub Pages (current)
-- Source: `main` branch · `/ (root)`
-- Custom domain: `reviveiqi.com`
-- HTTPS: Enforced via GitHub Pages SSL
-
-### DNS (Namecheap → GitHub Pages)
-| Type | Host | Value |
-|------|------|-------|
-| A Record | @ | 185.199.108.153 |
-| A Record | @ | 185.199.109.153 |
-| A Record | @ | 185.199.110.153 |
-| A Record | @ | 185.199.111.153 |
-| CNAME | www | ReviveIQ.github.io |
-
-### To update the site
-1. Edit `index.html`
-2. Commit to `main`
-3. GitHub Pages redeploys automatically in ~30 seconds
-
----
-
-## AI Suite — Products Featured
-
-### ✅ ResumeIQ (Live)
-- **URL:** [resumeiq-production-d97e.up.railway.app](https://resumeiq-production-d97e.up.railway.app)
-- **Repo:** `github.com/ReviveIQ/resumeiq`
-- **Stack:** TypeScript · Deployed on Railway
-- **What it does:** Transforms any resume into an ATS-optimized Word document with AI keyword gap analysis
-- **Pricing:** $9.99 one-time · $29/mo unlimited
-
-### ⚡ Job Search Pipeline (In Development)
-- **Repo:** `github.com/ReviveIQ/SalesAEWorkflowHub`
-- **What it does:** Adzuna job discovery + Apollo contact sourcing + Kanban application tracking + outreach sequence builder
-
-### ⚡ DealForge AI (In Development)
-- **Repo:** `github.com/ReviveIQ/SalesAEWorkflowHub`
-- **What it does:** Takes real deal inputs and generates ready-to-use outreach, follow-up sequences, and stakeholder re-engagement assets
-
-### 🧠 Pipeline Diagnostics Engine (Coming Soon)
-- **What it does:** Upload your pipeline → AI-generated deal-by-deal breakdown with root cause analysis and reconnection strategy
-
----
-
-## Roadmap
-
-- [ ] Migrate to React + Vite + Tailwind as suite grows
-- [ ] Add Calendly embed for direct booking on contact section
-- [ ] Connect Pipeline Diagnostics Engine when live
-- [ ] Add case studies / social proof section
-- [ ] SEO meta tags + Open Graph images
-- [ ] Analytics (Plausible or similar privacy-first)
-
----
-
-## Contact
-
-**Bryan Michael Greer**  
-Founder · ReviveIQI  
-📍 Fort Lauderdale, FL  
-✉️ bryan@reviveiqi.com  
-🌐 reviveiqi.com  
-🐙 github.com/ReviveIQ
+*ReviveIQI · Fort Lauderdale, FL · [reviveiqi.com](https://reviveiqi.com)*
