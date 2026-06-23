@@ -15,6 +15,7 @@ ReviveIQI is an AI-powered product suite covering the full revenue lifecycle —
 | **ResumeIQ** | ✅ Live | AI-powered resume transformation, ATS optimization, Working With Me personality section | [resumeiq.reviveiqi.com](https://resumeiq.reviveiqi.com) |
 | **MyCareerIQ** | ✅ Live | AI job search pipeline — research, cover letters, contact enrichment, outreach, tracking | [mycareeriq.reviveiqi.com](https://mycareeriq.reviveiqi.com) |
 | **Pipeline Diagnostics** | ✅ Live | B2B pipeline intake and diagnostic tool | [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com) |
+| **InboxIQ** | 🔜 In Development | Application tracking layer — monitors inbox for replies, auto-advances pipeline stages, weekly digest | — |
 | **DealForgeAI** | 🔜 In Development | B2B sales pipeline recovery and deal rescue | — |
 | **ReviveIQI Core** | ✅ Live | B2B consulting — "Build With Me" revenue recovery engagements | [reviveiqi.com](https://reviveiqi.com) |
 
@@ -57,6 +58,23 @@ AI-powered job search pipeline. Researches open roles, enriches contacts, genera
 
 ### Pipeline Diagnostics — [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com)
 B2B sales pipeline intake and diagnostic tool. Captures deal-level data and generates executive summaries with recovery strategies.
+
+
+---
+
+### InboxIQ *(in development)*
+The accountability layer for MyCareerIQ. Connects to Gmail/Outlook and watches what happens after you apply — so you never lose track of where things stand.
+
+- Connects to Gmail and Outlook via OAuth
+- Scans inbox for replies to applications and outreach messages
+- Detects rejection emails automatically → advances pipeline stage to Rejected
+- Detects interview invites → advances stage to Interviewing
+- Surfaces stale applications: "You applied to ZoomInfo 8 days ago — no reply. Follow up?"
+- Weekly digest email: open applications, pending replies, suggested follow-ups
+- Keeps job search top of mind between MyCareerIQ sessions
+- Shares TiDB pipeline — reads MyCareerIQ companies table to know which roles to watch for
+
+**The problem it solves:** Most job seekers apply and go silent. InboxIQ closes the loop — turning MyCareerIQ's pipeline into a living, auto-updating record of where every application stands.
 
 ---
 
