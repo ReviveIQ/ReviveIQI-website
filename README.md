@@ -12,10 +12,10 @@ ReviveIQI is an AI-powered product suite covering the full revenue lifecycle —
 
 | Product | Status | What it does | URL |
 |---|---|---|---|
-| **ResumeIQ** | ✅ Live | AI-powered resume transformation, ATS optimization, Working With Me personality section | [resumeiq.reviveiqi.com](https://resumeiq.reviveiqi.com) |
-| **MyCareerIQ** | ✅ Live | AI job search pipeline — research, cover letters, contact enrichment, outreach, tracking | [mycareeriq.reviveiqi.com](https://mycareeriq.reviveiqi.com) |
+| **ResumeIQ** | ✅ Live | AI resume transformation, ATS optimization, Working With Me personality section, free ATS checker | [resumeiq.reviveiqi.com](https://resumeiq.reviveiqi.com) |
+| **MyCareerIQ** | ✅ Live | AI job search pipeline — research, cover letters, contact enrichment, outreach tracking | [mycareeriq.reviveiqi.com](https://mycareeriq.reviveiqi.com) |
+| **InboxIQ** | ✅ Live | Gmail inbox monitoring — built into MyCareerIQ. Detects replies, auto-advances pipeline stages, classifies interview invites and rejections | Tab inside MyCareerIQ |
 | **Pipeline Diagnostics** | ✅ Live | B2B pipeline intake and diagnostic tool | [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com) |
-| **InboxIQ** | 🔜 In Development | Application tracking layer — monitors inbox for replies, auto-advances pipeline stages, weekly digest | — |
 | **DealForgeAI** | 🔜 In Development | B2B sales pipeline recovery and deal rescue | — |
 | **ReviveIQI Core** | ✅ Live | B2B consulting — "Build With Me" revenue recovery engagements | [reviveiqi.com](https://reviveiqi.com) |
 
@@ -24,62 +24,64 @@ ReviveIQI is an AI-powered product suite covering the full revenue lifecycle —
 ## Product detail
 
 ### ResumeIQ — [resumeiq.reviveiqi.com](https://resumeiq.reviveiqi.com)
-AI-powered resume transformation. Upload any PDF or DOCX — get back a polished, ATS-optimized Word document in 60 seconds.
+
+AI-powered resume transformation. Upload any PDF or DOCX — get back a polished, ATS-optimized Word document in 60 seconds. Stripe payments are **live**.
 
 - GPT-4o parsing + narrative extraction + enhancement pipeline
-- Before/after ATS score (pre-score grades original harshly; post-score rewards the transformation)
+- Before/after ATS score (4 dimensions: Format, Bullet Quality, Keywords, Completeness)
+- Free ATS Checker at `/ats-checker` — no auth, instant score, drives top-of-funnel
 - Captures non-standard sections: Publications, Projects, Hobbies, Volunteer
 - Post-conversion email delivers DOCX to inbox automatically
 - Abandoned checkout recovery — "You were so close" email 1 hour after initiating checkout
 - Optional "Working With Me" section synthesized from DISC, MBTI, PI, TKI, or 360 assessments
 - Cross-product SSO → MyCareerIQ 7-day free trial after download
+- Nurture email sequences A (transformed, no payment) / B (registered, never transformed) / C (high scorer)
 
 **Pricing:** Free (1 transform) · $14.99 Starter (3 transforms) · $19.99 Resume + Working With Me · $79.99 Career Launch Bundle
 
 ---
 
 ### MyCareerIQ — [mycareeriq.reviveiqi.com](https://mycareeriq.reviveiqi.com)
+
 AI-powered job search pipeline. Researches open roles, enriches contacts, generates tailored cover letters, and tracks your full application pipeline.
 
-- Greenhouse and Ashby ATS integrations — surfaces real open roles at target companies
+- Greenhouse, Ashby, and Lever ATS integrations — surfaces real open roles
 - 30-day freshness filter — no stale postings
-- Role-aware company discovery — suggests companies that actually hire for the candidate's role (admin → healthcare/gov/enterprise; sales → cross-industry)
-- 60+ standardized industry categories
-- Apollo contact enrichment (two-step: search → enrich) + Hunter.io fallback
-- LinkedIn search URL fallback when Apollo finds a name but no profile URL
-- Cover letter engine: 3-stage GPT pipeline (Narrative Brief → Letter → Quality Scoring)
-- 6 cover letter modes, auto-selected from job title; first name salutation only
-- Pipeline table sorted by date added, with relative timestamps
+- Hunter.io contact enrichment (Apollo degraded on free plan)
+- Cover letter engine: 3-stage GPT pipeline (Narrative Brief → Letter → Quality Scoring), 6 modes
+- Pipeline stages: Research → Outreach → Applied → Interviewing → Offer → Rejected
+- 5-step onboarding checklist — step 5 checks `gmailConnected` from user object
 - 7-day free trial for ResumeIQ users via cross-product SSO
+- Daily 8am EST cron — researches new jobs, sends morning digest
 
 **Pricing:** 7-day free trial · $29.99/month · $299/year
 
 ---
 
-### Pipeline Diagnostics — [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com)
-B2B sales pipeline intake and diagnostic tool. Captures deal-level data and generates executive summaries with recovery strategies.
+### InboxIQ *(live — tab inside MyCareerIQ)*
 
+The accountability layer for MyCareerIQ. Connects to Gmail and watches what happens after you apply.
+
+- Gmail OAuth (`gmail.modify` scope — Google verification in progress)
+- Two-phase inbox scan: pipeline company replies + inbound opportunity detection
+- GPT-4o-mini classification: interview invites, rejections, offers, follow-ups
+- Auto-advances pipeline stages on classification
+- Dismiss buttons with persistence to `inbox_events` table
+- `gmailConnected` flag set on user record on OAuth completion
 
 ---
 
-### InboxIQ *(in development)*
-The accountability layer for MyCareerIQ. Connects to Gmail/Outlook and watches what happens after you apply — so you never lose track of where things stand.
+### Pipeline Diagnostics — [diagnostic.reviveiqi.com](https://diagnostic.reviveiqi.com)
 
-- Connects to Gmail and Outlook via OAuth
-- Scans inbox for replies to applications and outreach messages
-- Detects rejection emails automatically → advances pipeline stage to Rejected
-- Detects interview invites → advances stage to Interviewing
-- Surfaces stale applications: "You applied to ZoomInfo 8 days ago — no reply. Follow up?"
-- Weekly digest email: open applications, pending replies, suggested follow-ups
-- Keeps job search top of mind between MyCareerIQ sessions
-- Shares TiDB pipeline — reads MyCareerIQ companies table to know which roles to watch for
-
-**The problem it solves:** Most job seekers apply and go silent. InboxIQ closes the loop — turning MyCareerIQ's pipeline into a living, auto-updating record of where every application stands.
+B2B sales pipeline intake and diagnostic tool. Captures deal-level data and generates executive summaries with recovery strategies.
 
 ---
 
 ### ReviveIQI Core — [reviveiqi.com](https://reviveiqi.com)
+
 B2B consulting engagements. "Build With Me" offer — diagnose broken pipeline, rebuild conversion systems, recover stalled revenue.
+
+**Discovery call:** [calendly.com/bryan-greer1/reviveiqi-discovery-call](https://calendly.com/bryan-greer1/reviveiqi-discovery-call)
 
 ---
 
@@ -87,17 +89,19 @@ B2B consulting engagements. "Build With Me" offer — diagnose broken pipeline, 
 
 ```
 ResumeIQ → SSO handoff → MyCareerIQ (7-day trial, resume auto-synced)
+                              ↓
+                          InboxIQ (Gmail tab — same app, same DB)
 ```
 
 All products share:
 - TiDB Cloud cluster (`pipeline-production`, gateway01.us-east-1, database: `pipeline`)
 - ReviveIQ GitHub org (`github.com/ReviveIQ`)
-- Railway hosting with auto-deploy on `main` push
+- Railway hosting with auto-deploy on `main` push (~60–90s)
 - Stripe (live keys, per-product checkout)
-- `CROSS_APP_SECRET` for signed cross-product tokens (HMAC-SHA256)
+- `CROSS_APP_SECRET` for signed cross-product tokens (HMAC-SHA256, 10-min expiry)
 
-ResumeIQ tables: `riq_users`, `riq_resumes`, `riq_sessions`, `riq_email_captures`, `riq_email_sends`
-MyCareerIQ tables: `users`, `companies`, `researchConfig`, `applications`, `workspaces`, `subscriptions`
+ResumeIQ tables: `riq_users`, `riq_resumes`, `riq_sessions`, `riq_email_captures`, `riq_email_sends`  
+MyCareerIQ tables: `users`, `companies`, `researchConfig`, `applications`, `workspaces`, `subscriptions`, `inbox_events`
 
 ---
 
@@ -133,9 +137,10 @@ Consulting: [calendly.com/bryan-greer1/reviveiqi-discovery-call](https://calendl
 | Auth | Custom JWT (ResumeIQ) · jose JWT (MyCareerIQ) |
 | AI | OpenAI GPT-4o + GPT-4o-mini |
 | Payments | Stripe (live keys, per-product) |
-| Email | Resend (ResumeIQ) · Gmail SMTP IPv4 (MyCareerIQ) |
+| Email | Resend (ResumeIQ) · Gmail SMTP port 587 STARTTLS IPv4 (MyCareerIQ) |
 | Storage | Cloudflare R2 (resumes, DOCX, cover letters) |
-| Contact enrichment | Apollo.io · Hunter.io |
+| Contact enrichment | Hunter.io (primary) · Apollo.io (degraded — free plan 403) |
+| Gmail integration | OAuth · `gmail.modify` scope · Google verification in progress |
 | DNS | Namecheap (reviveiqi.com) |
 | GitHub | [github.com/ReviveIQ](https://github.com/ReviveIQ) |
 
@@ -146,7 +151,7 @@ Consulting: [calendly.com/bryan-greer1/reviveiqi-discovery-call](https://calendl
 | Repo | Product | Deploy |
 |---|---|---|
 | `ReviveIQ/resumeiq` | ResumeIQ | Railway auto-deploy on main push |
-| `ReviveIQ/mycareeriq` | MyCareerIQ | Railway auto-deploy on main push |
+| `ReviveIQ/mycareeriq` | MyCareerIQ + InboxIQ | Railway auto-deploy on main push |
 | `ReviveIQ/blueprint-iq` | Pipeline Diagnostics | Railway |
 | `ReviveIQ/ReviveIQI-website` | reviveiqi.com | GitHub Pages |
 
