@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bryan Michael Greer — Senior Enterprise Account Executive</title>
-  <meta name="description" content="Senior Enterprise AE with 18 years of B2B SaaS sales experience across Enterprise, Territory, Expansion, and Outbound motions. Multi-state leader. Relationship-first closer." />
+  <meta name="description" content="Senior Enterprise AE. $8.2M book of business. $7M net new sold. Multi-state SaaS leader across Enterprise, Territory, Expansion, and Outbound motions." />
   <meta property="og:title" content="Bryan Michael Greer — Senior Enterprise AE" />
   <meta property="og:url" content="https://reviveiqi.com/bryan" />
   <link rel="canonical" href="https://reviveiqi.com/bryan" />
@@ -13,7 +13,6 @@
   <style>
     :root {
       --black:  #07090E;
-      --deep:   #0C0F16;
       --card:   #111520;
       --border: rgba(255,255,255,0.07);
       --text:   #E8EAF0;
@@ -41,12 +40,12 @@
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
 
     /* HERO */
-    .hero { padding: 80px 0 64px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: start; }
+    .hero { padding: 72px 0 60px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 268px; gap: 56px; align-items: start; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
-    h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(32px, 4.5vw, 52px); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; color: var(--white); margin-bottom: 10px; }
-    .hero-sub { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: var(--blue-lt); margin-bottom: 24px; letter-spacing: -.01em; }
-    .hero-bio { font-size: 16px; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 32px; max-width: 560px; }
+    h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(32px, 4.5vw, 50px); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; color: var(--white); margin-bottom: 10px; }
+    .hero-sub { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--blue-lt); margin-bottom: 22px; }
+    .hero-bio { font-size: 16px; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 28px; }
     .hero-bio strong { color: var(--text); font-weight: 500; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn { display: inline-flex; align-items: center; gap: 7px; border-radius: 9px; padding: 11px 22px; font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all .2s; }
@@ -61,51 +60,55 @@
     .side-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
     .side-row { padding: 8px 0; border-bottom: 1px solid var(--border); }
     .side-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .side-row-l { font-size: 11px; color: var(--muted); font-weight: 500; }
-    .side-row-v { font-size: 13px; font-weight: 600; color: var(--white); margin-top: 2px; }
+    .side-rl { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .side-rv { font-size: 13px; font-weight: 600; color: var(--white); margin-top: 2px; }
     @media(max-width:720px){ .hero-grid { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* NUMBERS BAR */
+    .numbers-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 48px 0 0; border-top: 1px solid var(--border); }
+    .num-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px 22px; }
+    .num-value { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .num-value span { color: var(--green); }
+    .num-label { font-size: 12px; color: var(--muted); font-weight: 500; line-height: 1.4; }
+    @media(max-width:640px){ .numbers-bar { grid-template-columns: 1fr 1fr; } }
 
     /* SECTIONS */
     .sec { padding: 60px 0; border-top: 1px solid var(--border); }
     .s-eye { font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
-    .s-h { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 2.8vw, 28px); font-weight: 800; color: var(--white); margin-bottom: 28px; line-height: 1.2; letter-spacing: -.015em; }
+    .s-h { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 800; color: var(--white); margin-bottom: 24px; line-height: 1.2; letter-spacing: -.015em; }
 
-    /* SALES MOTION GRID */
-    .motion-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .motion-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px; position: relative; overflow: hidden; }
-    .motion-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); opacity: 0; transition: opacity .2s; }
-    .motion-card:hover::before { opacity: 1; }
-    .motion-type { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
-    .motion-name { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
-    .motion-tags { display: flex; flex-direction: column; gap: 4px; }
+    /* MOTION GRID */
+    .motion-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .motion-card { background: var(--card); border: 1px solid var(--border); border-top: 3px solid transparent; border-radius: 13px; padding: 20px; transition: border-color .2s; }
+    .motion-card.primary { border-top-color: var(--green); }
+    .motion-card.strong { border-top-color: var(--blue); }
+    .motion-badge { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+    .badge-green { color: var(--green); }
+    .badge-blue { color: var(--blue-lt); }
+    .motion-name { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .motion-tags { display: flex; flex-direction: column; gap: 5px; }
     .motion-tag { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
-    .motion-tag::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-lt); flex-shrink: 0; }
-    @media(max-width:720px){ .motion-grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:480px){ .motion-grid { grid-template-columns: 1fr; } }
+    .motion-tag::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+    @media(max-width:700px){ .motion-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:440px){ .motion-grid { grid-template-columns: 1fr; } }
 
-    /* WHAT I BRING */
-    .bring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .bring-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px 22px; }
-    .bring-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 7px; }
-    .bring-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
-    .bring-text strong { color: var(--text); font-weight: 500; }
-    @media(max-width:560px){ .bring-grid { grid-template-columns: 1fr; } }
+    /* PROOF GRID */
+    .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .proof-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 22px; }
+    .proof-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .proof-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
+    .proof-text strong { color: var(--text); font-weight: 500; }
+    .proof-metric { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; color: var(--green); background: rgba(0,200,150,0.1); border: 1px solid rgba(0,200,150,0.2); border-radius: 6px; padding: 3px 10px; margin-top: 10px; }
+    @media(max-width:560px){ .proof-grid { grid-template-columns: 1fr; } }
 
     /* HOW I WORK */
-    .wwm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .wwm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
     .wwm-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px; }
     .wwm-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-lt); margin-bottom: 8px; }
     .wwm-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
     .wwm-text strong { color: var(--text); font-weight: 500; }
     @media(max-width:640px){ .wwm-grid { grid-template-columns: 1fr 1fr; } }
     @media(max-width:420px){ .wwm-grid { grid-template-columns: 1fr; } }
-
-    /* ASSESSMENTS */
-    .assess-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .a-pill { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
-    .a-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-    .a-val { font-size: 13px; font-weight: 600; color: var(--white); }
-    .a-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
     /* QUOTES */
     .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -114,15 +117,15 @@
     .q-attr { font-size: 11px; color: var(--muted); margin-top: 8px; }
     @media(max-width:560px){ .quotes { grid-template-columns: 1fr; } }
 
-    /* BELIEFS */
-    .beliefs { display: flex; flex-direction: column; gap: 12px; max-width: 680px; }
-    .belief { display: flex; gap: 20px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px 22px; }
-    .belief-n { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: rgba(0,200,150,0.18); line-height: 1; flex-shrink: 0; width: 32px; }
-    .belief-t { font-size: 14px; color: var(--text); line-height: 1.75; }
-    .belief-t strong { color: var(--white); font-weight: 600; }
+    /* ASSESS PILLS */
+    .assess-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .a-pill { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+    .a-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .a-val { font-size: 13px; font-weight: 600; color: var(--white); }
+    .a-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
     /* CONTACT */
-    .cstrip { padding: 56px 0 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--border); }
+    .cstrip { padding: 52px 0 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--border); }
     .cstrip h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; color: var(--white); }
     .cstrip p { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 300; }
 
@@ -151,7 +154,9 @@
         <div class="eyebrow">Senior Enterprise AE · Fort Lauderdale, FL · 18 Years B2B SaaS</div>
         <h1>Bryan Michael Greer</h1>
         <div class="hero-sub">Enterprise Closer · Territory Leader · Expansion Specialist</div>
-        <p class="hero-bio">I built my career from the phones up — SDR to multi-state SaaS leader — earning trust at the enterprise level through <strong>preparation, follow-through, and genuine relationship development</strong>. I know how revenue is created because I've operated every motion that creates it: Enterprise, Territory, Expansion, and Outbound. I pair disciplined frameworks with human trust to consistently outperform — and I bring that same operating system into every role I take.</p>
+        <p class="hero-bio">
+          I carried an <strong>$8.2M book of business</strong> and closed <strong>$7M in net new revenue</strong> across multi-state enterprise and district-level accounts — building every deal from relationship first, framework second. I grew from SDR to senior territory leader by earning trust at the executive level through preparation, follow-through, and genuine conviction about what I sell. I know how revenue is built because I've operated every motion that builds it.
+        </p>
         <div class="hero-actions">
           <a href="mailto:bryan@reviveiqi.com" class="btn btn-green">↗ bryan@reviveiqi.com</a>
           <a href="https://linkedin.com/in/bryan-greer" target="_blank" class="btn btn-ghost">LinkedIn</a>
@@ -159,14 +164,36 @@
       </div>
       <div class="sidebar">
         <div class="side-card">
-          <div class="side-label">Profile</div>
-          <div class="side-row"><div class="side-row-l">Location</div><div class="side-row-v">Fort Lauderdale, FL</div></div>
-          <div class="side-row"><div class="side-row-l">Experience</div><div class="side-row-v">18 years B2B SaaS</div></div>
-          <div class="side-row"><div class="side-row-l">Motion Depth</div><div class="side-row-v">Enterprise · Territory · Expansion · Outbound</div></div>
-          <div class="side-row"><div class="side-row-l">Buyer Level</div><div class="side-row-v">C-Suite · VP · District Leaders · Procurement</div></div>
-          <div class="side-row"><div class="side-row-l">Industry Depth</div><div class="side-row-v">SaaS · EdTech · GovTech</div></div>
-          <div class="side-row"><div class="side-row-l">Methodology</div><div class="side-row-v">MEDDPICC · Challenger · Consultative</div></div>
+          <div class="side-label">At a Glance</div>
+          <div class="side-row"><div class="side-rl">Location</div><div class="side-rv">Fort Lauderdale, FL</div></div>
+          <div class="side-row"><div class="side-rl">Experience</div><div class="side-rv">18 years B2B SaaS</div></div>
+          <div class="side-row"><div class="side-rl">Book of Business</div><div class="side-rv">$8.2M</div></div>
+          <div class="side-row"><div class="side-rl">Net New Sold</div><div class="side-rv">$7M</div></div>
+          <div class="side-row"><div class="side-rl">Annual Quota</div><div class="side-rv">$1.25M</div></div>
+          <div class="side-row"><div class="side-rl">Motion Depth</div><div class="side-rv">Enterprise · Territory · Expansion · Outbound</div></div>
+          <div class="side-row"><div class="side-rl">Industry</div><div class="side-rv">SaaS · EdTech · GovTech</div></div>
+          <div class="side-row"><div class="side-rl">Methodology</div><div class="side-rv">MEDDPICC · Consultative</div></div>
         </div>
+      </div>
+    </div>
+
+    <!-- NUMBERS BAR -->
+    <div class="numbers-bar">
+      <div class="num-card">
+        <div class="num-value">$8.2<span>M</span></div>
+        <div class="num-label">Book of business managed</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">$7<span>M</span></div>
+        <div class="num-label">Net new revenue closed</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">$1.25<span>M</span></div>
+        <div class="num-label">Annual quota carried</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">18<span>yr</span></div>
+        <div class="num-label">B2B SaaS sales experience</div>
       </div>
     </div>
   </div>
@@ -176,173 +203,149 @@
     <div class="s-eye">Sales Motion</div>
     <div class="s-h">How I generate revenue</div>
     <div class="motion-grid">
-      <div class="motion-card">
-        <div class="motion-type">Primary</div>
+      <div class="motion-card primary">
+        <div class="motion-badge badge-green">Primary</div>
         <div class="motion-name">Enterprise Sales</div>
         <div class="motion-tags">
-          <div class="motion-tag">Long sales cycles</div>
-          <div class="motion-tag">Multi-stakeholder</div>
-          <div class="motion-tag">Executive buyers</div>
-          <div class="motion-tag">MEDDPICC</div>
-          <div class="motion-tag">Procurement &amp; Legal</div>
-          <div class="motion-tag">Security reviews</div>
+          <div class="motion-tag">Long multi-stakeholder cycles</div>
+          <div class="motion-tag">C-Suite & VP buyers</div>
+          <div class="motion-tag">MEDDPICC qualification</div>
+          <div class="motion-tag">Procurement & legal review</div>
+          <div class="motion-tag">Security & compliance</div>
+          <div class="motion-tag">District-level accounts</div>
         </div>
       </div>
-      <div class="motion-card">
-        <div class="motion-type">Primary</div>
+      <div class="motion-card primary">
+        <div class="motion-badge badge-green">Primary</div>
         <div class="motion-name">Territory Sales</div>
         <div class="motion-tags">
           <div class="motion-tag">Multi-state geography</div>
-          <div class="motion-tag">Pipeline ownership</div>
+          <div class="motion-tag">Full pipeline ownership</div>
           <div class="motion-tag">Forecast management</div>
-          <div class="motion-tag">Field relationships</div>
-          <div class="motion-tag">District leadership</div>
-          <div class="motion-tag">Local account mapping</div>
+          <div class="motion-tag">Field relationship building</div>
+          <div class="motion-tag">Account mapping & planning</div>
+          <div class="motion-tag">EdTech & GovTech verticals</div>
         </div>
       </div>
-      <div class="motion-card">
-        <div class="motion-type">Strong</div>
-        <div class="motion-name">Expansion &amp; CS</div>
+      <div class="motion-card strong">
+        <div class="motion-badge badge-blue">Strong</div>
+        <div class="motion-name">Expansion & CS</div>
         <div class="motion-tags">
-          <div class="motion-tag">Renewals &amp; upsell</div>
-          <div class="motion-tag">Cross-sell motion</div>
-          <div class="motion-tag">EBRs &amp; QBRs</div>
+          <div class="motion-tag">Renewal & upsell motion</div>
+          <div class="motion-tag">Cross-sell execution</div>
+          <div class="motion-tag">QBR & EBR led growth</div>
           <div class="motion-tag">NRR ownership</div>
-          <div class="motion-tag">Adoption &amp; value</div>
+          <div class="motion-tag">Adoption-based expansion</div>
           <div class="motion-tag">Executive alignment</div>
         </div>
       </div>
-      <div class="motion-card">
-        <div class="motion-type">Strong</div>
+      <div class="motion-card strong">
+        <div class="motion-badge badge-blue">Strong</div>
         <div class="motion-name">Outbound Sales</div>
         <div class="motion-tags">
-          <div class="motion-tag">Demand creation</div>
-          <div class="motion-tag">Cold outreach</div>
-          <div class="motion-tag">Sequencing</div>
-          <div class="motion-tag">Account research</div>
+          <div class="motion-tag">Cold outreach & sequencing</div>
+          <div class="motion-tag">Account & stakeholder research</div>
           <div class="motion-tag">LinkedIn prospecting</div>
-          <div class="motion-tag">Pipeline recovery</div>
+          <div class="motion-tag">Pipeline creation from zero</div>
+          <div class="motion-tag">Stalled deal re-engagement</div>
+          <div class="motion-tag">Multi-channel cadences</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHAT I BRING -->
+  <!-- PROOF POINTS -->
   <div class="sec">
-    <div class="s-eye">What I Bring</div>
-    <div class="s-h">Six things I do reliably well</div>
-    <div class="bring-grid">
-      <div class="bring-card">
-        <div class="bring-title">Enterprise Relationship Development</div>
-        <div class="bring-text">I sell through trust built over time. My reputation is for <strong>preparation, follow-through, and listening to understand</strong> — not to respond. Peers consistently describe me as someone who prepares before and reflects after every client conversation.</div>
+    <div class="s-eye">Proof Points</div>
+    <div class="s-h">What I've delivered</div>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-title">Enterprise Territory Ownership</div>
+        <div class="proof-text">Managed a multi-state enterprise territory across EdTech and GovTech accounts — owning the full cycle from prospecting through procurement, legal review, and post-sale expansion. Built relationships at the district and C-Suite level that compounded year over year into expansion pipeline.</div>
+        <div class="proof-metric">$8.2M Book of Business</div>
       </div>
-      <div class="bring-card">
-        <div class="bring-title">Multi-Stakeholder Navigation</div>
-        <div class="bring-text">I map buying committees deliberately — identifying economic buyers, champions, and blockers early. I build relationships at multiple levels so no single contact departure stalls a deal.</div>
+      <div class="proof-card">
+        <div class="proof-title">Net New Revenue Generation</div>
+        <div class="proof-text">Closed $7M in net new business through disciplined outbound prospecting, multi-stakeholder navigation, and a consultative discovery process that positioned value at the executive level before procurement ever entered the room. Every deal built from a cold relationship.</div>
+        <div class="proof-metric">$7M Net New Sold</div>
       </div>
-      <div class="bring-card">
-        <div class="bring-title">Territory Pipeline Ownership</div>
-        <div class="bring-text">I treat my territory like a business — <strong>building pipeline from scratch</strong>, forecasting accurately, and managing the full funnel from first outreach through closed-won without needing hand-holding at any stage.</div>
+      <div class="proof-card">
+        <div class="proof-title">Quota Performance</div>
+        <div class="proof-text">Carried a $1.25M annual quota against a complex enterprise motion — managing long sales cycles, district procurement timelines, and multi-year contract structures simultaneously without losing focus on the pipeline behind the deals in flight.</div>
+        <div class="proof-metric">$1.25M Annual Quota</div>
       </div>
-      <div class="bring-card">
-        <div class="bring-title">Expansion Revenue</div>
-        <div class="bring-text">I grow existing accounts through genuine value delivery — QBRs that surface real needs, cross-sell timing based on adoption signals, and executive relationships that make renewal a formality rather than a negotiation.</div>
-      </div>
-      <div class="bring-card">
-        <div class="bring-title">Pipeline Recovery</div>
-        <div class="bring-text">I diagnose stalled deals by tracing root causes — messaging gaps, stakeholder misalignment, process breakdowns — then map a specific reconnection strategy. <strong>I recover 10–25% of pipeline others have written off.</strong></div>
-      </div>
-      <div class="bring-card">
-        <div class="bring-title">Disciplined Execution</div>
-        <div class="bring-text">High conscientiousness, clear Thinking preference, competitive drive measured against standards. I set a high bar, hold myself to it first, and create accountability that others rise to meet — not because it's required, but because <strong>I make the standard feel worth hitting.</strong></div>
+      <div class="proof-card">
+        <div class="proof-title">Expansion Revenue</div>
+        <div class="proof-text">Grew accounts through QBRs that surfaced genuine needs rather than manufactured urgency — building the kind of executive relationships where renewal is a formality and expansion conversations start before the contract renews. Upsell and cross-sell treated as natural outcomes of value delivery, not separate motions.</div>
+        <div class="proof-metric">Expansion-Led Growth</div>
       </div>
     </div>
   </div>
 
-  <!-- HOW I WORK -->
+  <!-- HOW I SELL -->
   <div class="sec">
-    <div class="s-eye">Working With Me</div>
-    <div class="s-h">How I operate</div>
+    <div class="s-eye">How I Sell</div>
+    <div class="s-h">The operating principles behind the numbers</div>
     <div class="wwm-grid">
       <div class="wwm-card">
-        <div class="wwm-lbl">Communication</div>
-        <div class="wwm-text">Direct and context-first. I <strong>listen to understand before responding.</strong> I ask precise questions. I follow up on everything I commit to — every time.</div>
+        <div class="wwm-lbl">Discovery</div>
+        <div class="wwm-text">I listen to understand — not to respond. Every discovery call starts with questions about <strong>what they want to know, what the intent is, and what the preferred outcome looks like.</strong> Better questions reveal root causes that surface-level pitches miss.</div>
       </div>
       <div class="wwm-card">
-        <div class="wwm-lbl">Decision Making</div>
-        <div class="wwm-text">Deliberate before committing. Confident once decided. I gather facts, analyze clearly, and <strong>don't reverse without cause.</strong></div>
+        <div class="wwm-lbl">Relationship</div>
+        <div class="wwm-text">I prepare before and debrief after every client conversation. Peers describe me as someone who <strong>follows through on every commitment — every time.</strong> In enterprise sales, trust is the close.</div>
       </div>
       <div class="wwm-card">
-        <div class="wwm-lbl">Collaboration</div>
-        <div class="wwm-text">I prepare before and reflect after every client call. I give direct feedback without making it personal. <strong>Dependable and genuinely collaborative</strong> when the work calls for it.</div>
+        <div class="wwm-lbl">Multi-Threading</div>
+        <div class="wwm-text">I map buying committees deliberately — identifying economic buyers, champions, and blockers early. I build at multiple levels so <strong>no single contact change stalls a deal</strong> in the final mile.</div>
+      </div>
+      <div class="wwm-card">
+        <div class="wwm-lbl">Pipeline Discipline</div>
+        <div class="wwm-text">I treat my territory like a business — <strong>owning forecast accuracy</strong>, managing the full funnel, and never letting the deals in flight distract from building what comes next.</div>
       </div>
       <div class="wwm-card">
         <div class="wwm-lbl">Under Pressure</div>
-        <div class="wwm-text">More precise, not more reactive. <strong>Mission-oriented.</strong> I pick battles carefully — when I engage, I'm in to solve, not to win.</div>
+        <div class="wwm-text">More precise, not more reactive. Mission-oriented. <strong>I compete against standards — not people</strong> — and that steadiness is what clients feel at the end of a deal when things get complicated.</div>
       </div>
       <div class="wwm-card">
-        <div class="wwm-lbl">What Drives Me</div>
-        <div class="wwm-text">Complex problems solved through logic and trust. Clear goals, real autonomy, meaningful outcomes. <strong>I compete against standards — not people.</strong></div>
+        <div class="wwm-lbl">Conviction</div>
+        <div class="wwm-text">I put my heart and mind into what I sell. The clients who've worked with me longest describe it as <strong>genuine — not transactional.</strong> That's not a soft skill. It's a revenue driver.</div>
       </div>
-      <div class="wwm-card">
-        <div class="wwm-lbl">What I Need</div>
-        <div class="wwm-text">Clear expectations and real accountability. Problems worth solving. A team that does what it says it will do. <strong>I perform best when encouraged and collaborating</strong> with people who take the work seriously.</div>
-      </div>
+    </div>
+  </div>
+
+  <!-- WHAT OTHERS SAY -->
+  <div class="sec">
+    <div class="s-eye">360 Feedback · PeopleTek · May 2026</div>
+    <div class="s-h">What people who've worked with me say</div>
+    <div class="quotes">
+      <div class="q"><div class="q-text">"Always willing to meet before and after customer calls to plan and reflect. Dependable and consistently follows through on commitments."</div><div class="q-attr">— Peer</div></div>
+      <div class="q"><div class="q-text">"Listening to understand client issues or challenges and speaks with conviction."</div><div class="q-attr">— Peer</div></div>
+      <div class="q"><div class="q-text">"He is reliable and follows through on his word."</div><div class="q-attr">— Peer</div></div>
+      <div class="q"><div class="q-text">"Very mission oriented and loyal. Strong belief in his abilities — his confidence is admirable."</div><div class="q-attr">— Peer</div></div>
     </div>
   </div>
 
   <!-- ASSESSMENTS -->
   <div class="sec">
     <div class="s-eye">Validated Across 7 Assessments</div>
-    <div class="s-h">What the data says</div>
+    <div class="s-h">What the data confirms</div>
     <div class="assess-row">
-      <div class="a-pill"><div class="a-lbl">Predictive Index</div><div class="a-val">Strategist</div><div class="a-sub">Results-oriented · Analytical · Drive for change</div></div>
-      <div class="a-pill"><div class="a-lbl">DiSC</div><div class="a-val">C Style</div><div class="a-sub">Accuracy · Stability · Challenge</div></div>
-      <div class="a-pill"><div class="a-lbl">Myers-Briggs</div><div class="a-val">ISTJ</div><div class="a-sub">Responsible Realist · Clear Thinking (23)</div></div>
-      <div class="a-pill"><div class="a-lbl">Thomas-Kilmann</div><div class="a-val">Avoiding-led</div><div class="a-sub">Collaborating 58% · Competing 57%</div></div>
+      <div class="a-pill"><div class="a-lbl">Predictive Index</div><div class="a-val">Strategist</div><div class="a-sub">Results-oriented · Drive for change</div></div>
+      <div class="a-pill"><div class="a-lbl">DiSC</div><div class="a-val">C Style</div><div class="a-sub">Accuracy · Challenge · Stability</div></div>
+      <div class="a-pill"><div class="a-lbl">Myers-Briggs</div><div class="a-val">ISTJ</div><div class="a-sub">Responsible Realist</div></div>
+      <div class="a-pill"><div class="a-lbl">Thomas-Kilmann</div><div class="a-val">Collaborating 58%</div><div class="a-sub">Engages to solve, not to win</div></div>
       <div class="a-pill"><div class="a-lbl">Criteria</div><div class="a-val">Conscientious</div><div class="a-sub">Competitive · Intellectually Curious</div></div>
-      <div class="a-pill"><div class="a-lbl">Learning to Listen</div><div class="a-val">Score: 123</div><div class="a-sub">Effective · Above avg focus</div></div>
-      <div class="a-pill"><div class="a-lbl">PeopleTek 360</div><div class="a-val">Relationships 3.9 · Feedback 3.9</div><div class="a-sub">Strongest behaviors — all raters</div></div>
-    </div>
-  </div>
-
-  <!-- QUOTES -->
-  <div class="sec">
-    <div class="s-eye">360 Feedback · PeopleTek · May 2026</div>
-    <div class="s-h">What people who've worked with me say</div>
-    <div class="quotes">
-      <div class="q"><div class="q-text">"He is reliable and follows through on his word."</div><div class="q-attr">— Peer</div></div>
-      <div class="q"><div class="q-text">"Always willing to meet before and after customer calls to plan and reflect. Dependable and consistently follows through on commitments."</div><div class="q-attr">— Peer</div></div>
-      <div class="q"><div class="q-text">"Listening to understand client issues or challenges and speaks with conviction."</div><div class="q-attr">— Peer</div></div>
-      <div class="q"><div class="q-text">"Very mission oriented and loyal. Strong belief in his abilities — his confidence is admirable."</div><div class="q-attr">— Peer</div></div>
-    </div>
-  </div>
-
-  <!-- BELIEFS -->
-  <div class="sec">
-    <div class="s-eye">How I Think</div>
-    <div class="s-h">Three things I believe</div>
-    <div class="beliefs">
-      <div class="belief">
-        <div class="belief-n">01</div>
-        <div class="belief-t"><strong>Communication can solve 80% of any issue.</strong> Miscommunication will cause 100% of your avoidable problems. Most stalled deals aren't deal problems — they're communication failures that compounded over time.</div>
-      </div>
-      <div class="belief">
-        <div class="belief-n">02</div>
-        <div class="belief-t"><strong>The quality of your outcome depends on the quality of your questions.</strong> What do you want to know? What's the intent? What's the preferred outcome? Better questions reveal root causes that surface-level diagnostics miss.</div>
-      </div>
-      <div class="belief">
-        <div class="belief-n">03</div>
-        <div class="belief-t"><strong>Put your heart and mind into everything you do.</strong> People enjoy what they invest in. I show up fully to every conversation and every account — and that energy compounds over time into the kind of trust that wins renewals and referrals.</div>
-      </div>
+      <div class="a-pill"><div class="a-lbl">Learning to Listen</div><div class="a-val">Score: 123</div><div class="a-sub">Effective listener — above avg focus</div></div>
+      <div class="a-pill"><div class="a-lbl">PeopleTek 360</div><div class="a-val">Relationships 3.9 · Feedback 3.9</div><div class="a-sub">Top behaviors — all raters</div></div>
     </div>
   </div>
 
   <!-- CONTACT -->
   <div class="cstrip">
     <div>
-      <h2>Let's connect.</h2>
-      <p>bryan@reviveiqi.com · Fort Lauderdale, FL · Open to Senior AE and Enterprise Sales roles</p>
+      <h2>Let's talk.</h2>
+      <p>bryan@reviveiqi.com · Fort Lauderdale, FL · Open to Senior Enterprise AE roles</p>
     </div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="mailto:bryan@reviveiqi.com" class="btn btn-green">Email Me</a>
@@ -353,6 +356,5 @@
 </div>
 
 <footer><p><a href="https://reviveiqi.com">ReviveIQI</a> · <a href="https://reviveiqi.com/bryan">Bryan Greer</a> · Fort Lauderdale, FL</p></footer>
-
 </body>
 </html>
